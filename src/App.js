@@ -1,7 +1,8 @@
+import Calories from './caloriesCalculator/index';
 function App() {
   return (
     <div>
-      Hello World
+      <Calories />
     </div>
   );
 }
