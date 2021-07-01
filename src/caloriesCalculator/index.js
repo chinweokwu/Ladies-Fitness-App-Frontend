@@ -1,56 +1,41 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState } from 'react';
-import Calendar from 'react-calendar';
+import React, {useState} from 'react';
+import './styles.css';
+import{ DatePickerComponent } from '@syncfusion/ej2-react-calendars';
 
 const Calories = () => {
-  const [date, setDate] = useState(new Date());
-  const [weight, setWeight] = useState(0);
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [weight, setCurrentWeight] = useState(0);
   const [time, setTime] = useState(0);
-  const [total, setTotal] = useState(weight + time)
 
-  const datePicker = date => {
-    setDate(date.getDate())
+  const handleSubmit = e => {
+    e.preventDefault()
+    const weights = weight;
+    const date= currentDate.toDateString();
+    const times= time
+    console.log(date)
+    console.log(times)
+    console.log(weights)
   }
-
-  const handleTime = e => {
-    setTime(+e.target.value)
-  }
-
   const handleWeight = e => {
-    setWeight(+e.target.value)
+    setCurrentWeight({weight: e.target.value})
   }
-
-  const totalCaloriesLost = () => {
-    setTotal(weight + time)
+  const handleTime = e => {
+    setTime({time: e.target.value})
   }
-
+  const handleCurrentDate = () => {
+    setCurrentDate(currentDate)
+  }
   return (
     <div>
-      <form onClick={totalCaloriesLost}>
-      <Calendar onChange={datePicker} value={date}/>
-          Body Weight (kg)
-        <input 
-          type='number'
-          name='weight'
-          placeholder='0'
-          value={weight}
-          onChange={handleWeight}
-        />
-
-          Excerise Duration (minutes)
-        <input 
-          type='number'
-          name='time'
-          value={time}
-          placeholder='0'
-          onChange={handleTime}
-        />
-        <button>Calculate</button>
+      <form onSubmit={handleSubmit}>
+        <DatePickerComponent format="dd-MMM-yy" onChange={handleCurrentDate}></DatePickerComponent>
+        <input type='number' onChange={handleWeight}/>
+        <input type='number' onChange={handleTime}/>
+        <button>clickme</button>
       </form>
-      {/* {date.toString()} */}
-      <h1>{total} {date.toDateString()}</h1>
     </div>
   )
-}
+};
 
 export default Calories

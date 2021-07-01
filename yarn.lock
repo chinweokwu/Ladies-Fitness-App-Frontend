@@ -1634,6 +1634,94 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
+"@syncfusion/ej2-base@~19.2.44":
+  version "19.2.44"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-base/-/ej2-base-19.2.44.tgz#040b848ef6e54165745a535802cd135359cc7452"
+  integrity sha512-tDk1MKvbTcErY/Byq178o93ti9YI1g9g5Vd4YGqyO26ZwMRy88JD0I274KIWhWHZUbMiAY8c8VnB30TjB8zljg==
+  dependencies:
+    "@syncfusion/ej2-icons" "~19.2.44"
+
+"@syncfusion/ej2-buttons@~19.2.44":
+  version "19.2.44"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-buttons/-/ej2-buttons-19.2.44.tgz#5a5e86e4ca69e124c8b71007632f87d4500946da"
+  integrity sha512-4HB+T+XWlP0zj0BMZOM1XvjkvTqh6PQ66r/qurM8Id9c6dJJf4udP9Sl4KRGLY7n7NlvIS1diit6/XOtCoOdqQ==
+  dependencies:
+    "@syncfusion/ej2-base" "~19.2.44"
+
+"@syncfusion/ej2-calendars@19.2.44":
+  version "19.2.44"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-calendars/-/ej2-calendars-19.2.44.tgz#aa8de4a6bb99734ba946a9429eccf172535c8d04"
+  integrity sha512-wE8Ch6YUQQW8UvJyhid1eiEeKOEEJOjo3JIvMSF64nmj1Wj6ksWxuW3jYuBkXWix/cSD+Ey6Z+rwySWvQilg2g==
+  dependencies:
+    "@syncfusion/ej2-base" "~19.2.44"
+    "@syncfusion/ej2-buttons" "~19.2.44"
+    "@syncfusion/ej2-inputs" "~19.2.44"
+    "@syncfusion/ej2-lists" "~19.2.44"
+    "@syncfusion/ej2-popups" "~19.2.44"
+
+"@syncfusion/ej2-data@~19.2.44":
+  version "19.2.44"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-data/-/ej2-data-19.2.44.tgz#9c5d2874e04bee6d5763d3919ef14b9e6862673d"
+  integrity sha512-Cnw7RqqzaBKKV37CHpeJj/BGUO5enPqoiJilUfhBrVWTJXDwXn1Pncb5A0rERTaFjhPw69aSIi1HH2/wdxqhUw==
+  dependencies:
+    "@syncfusion/ej2-base" "~19.2.44"
+
+"@syncfusion/ej2-icons@~19.2.44":
+  version "19.2.44"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-icons/-/ej2-icons-19.2.44.tgz#e1d752bf1326eb6e3ebcad75f3c728a4d5cf550d"
+  integrity sha512-FXOQ6L90aLgn9ab6hUlX4TG01ztqy974DqxF/8JCIkT+V0BBbDdcQ/un5+j71elXtH5EpNYA6WjnVLiisuoZoA==
+
+"@syncfusion/ej2-inputs@~19.2.44":
+  version "19.2.44"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-inputs/-/ej2-inputs-19.2.44.tgz#5e96366786bc71cb31f9e602a638071915912e67"
+  integrity sha512-HbPfvtpYyLQdMe6zbsD1TbRTl4KMe5N/IlO5clSza9rnp+bzB4hhcoPc3ehD51IJv29pSMzyhYlGD8iVa71CZQ==
+  dependencies:
+    "@syncfusion/ej2-base" "~19.2.44"
+    "@syncfusion/ej2-buttons" "~19.2.44"
+    "@syncfusion/ej2-popups" "~19.2.44"
+    "@syncfusion/ej2-splitbuttons" "~19.2.44"
+
+"@syncfusion/ej2-lists@~19.2.44":
+  version "19.2.44"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-lists/-/ej2-lists-19.2.44.tgz#2a5d84749609d285311bff5c4eb95fc09ea8321c"
+  integrity sha512-EBLEWo5RTvoisP1U6MRSSAvSS1WxfZ/meg+fzTA2sOrkY1KYkmcY1sq7HBswZc8vRbMHPUZA5nNr3/5Dp+y3WQ==
+  dependencies:
+    "@syncfusion/ej2-base" "~19.2.44"
+    "@syncfusion/ej2-buttons" "~19.2.44"
+    "@syncfusion/ej2-data" "~19.2.44"
+
+"@syncfusion/ej2-popups@~19.2.44":
+  version "19.2.44"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-popups/-/ej2-popups-19.2.44.tgz#76198a39779d60662fce00a7dbe6bb6defc0dc5a"
+  integrity sha512-WZLkbHvW6VpfhwgMng9U2knZmeF4ECuXcXH6Wkc8zxfKzuaSI4WQn/MXxC9wd+WquYGrMxPz4zpolBnEiVDmsQ==
+  dependencies:
+    "@syncfusion/ej2-base" "~19.2.44"
+    "@syncfusion/ej2-buttons" "~19.2.44"
+
+"@syncfusion/ej2-react-base@~19.2.44":
+  version "19.2.44"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-react-base/-/ej2-react-base-19.2.44.tgz#ea636ab5824ba3189f4583e354a304ae7cf5e9b5"
+  integrity sha512-RhE7K6LZzqb3fONz1LGcy/l8K1QFFeL6galnJ/EFZcd8lKdF39PIPojB6OzxQuvfl2hjjHYT9gAkgfXAXHmomw==
+  dependencies:
+    "@syncfusion/ej2-base" "~19.2.44"
+
+"@syncfusion/ej2-react-calendars@^19.2.44":
+  version "19.2.44"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-react-calendars/-/ej2-react-calendars-19.2.44.tgz#03fe02574f5ed712cf1dd80d3fe807e891a66613"
+  integrity sha512-y7LI3ujQ9rzsLuwmgHhVRSGKskmQfjoBj/wTLS37odbOu8DxuBzA7007XCX8p430T/l4emnbcViL5MtZKLPr5Q==
+  dependencies:
+    "@syncfusion/ej2-base" "~19.2.44"
+    "@syncfusion/ej2-calendars" "19.2.44"
+    "@syncfusion/ej2-react-base" "~19.2.44"
+
+"@syncfusion/ej2-splitbuttons@~19.2.44":
+  version "19.2.44"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-splitbuttons/-/ej2-splitbuttons-19.2.44.tgz#9f04dd3b7bfa6daf3cad97c2d39407b163afbb08"
+  integrity sha512-NPzyezW1WaGp1jp/ISVwKnmFEx7ZXYI4Dlkismei05ixHehHc3Gl9wvhbfu207mxrgYY380M7YF7XTB6FEjTpQ==
+  dependencies:
+    "@syncfusion/ej2-base" "~19.2.44"
+    "@syncfusion/ej2-popups" "~19.2.44"
+
 "@testing-library/dom@^7.28.1":
   version "7.31.2"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-7.31.2.tgz#df361db38f5212b88555068ab8119f5d841a8c4a"
