@@ -1,4 +1,4 @@
-import Calories from './caloriesCalculator/index';
+import Calories from './calory/index';
 function App() {
   return (
     <div>
