@@ -4,7 +4,8 @@ import React, {useState, useEffect} from 'react';
 import './styles.css';
 import{ DatePickerComponent } from '@syncfusion/ej2-react-calendars';
 import { connect, useDispatch } from 'react-redux';
-import Errors from '../Notifications/Errors'
+import Errors from '../Notifications/Errors';
+import { CALORIES_LOADING, CALORIES_CREATING } from './constants'
 
 const Calories = ({ list, requesting, errors }) => {
   const dispatch = useDispatch()
@@ -13,7 +14,7 @@ const Calories = ({ list, requesting, errors }) => {
   const [time, setTime] = useState(0);
 
   useEffect(()=>{
-    dispatch({type:'CALORIES_LOADING'})
+    dispatch({type: CALORIES_LOADING })
   }, [])
 
   const calculateCalories = () =>{
@@ -29,7 +30,7 @@ const Calories = ({ list, requesting, errors }) => {
   }
   const handleSubmit = e => {
     e.preventDefault()
-    dispatch({type: 'CALORIES_CREATING', payload: calculateCalories})
+    dispatch({type: CALORIES_CREATING, payload: calculateCalories})
   }
   const handleWeight = e => {
     setCurrentWeight({weight: e.target.value})

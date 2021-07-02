@@ -76,8 +76,8 @@ function caloryDeleteAPI (id) {
 
 function* caloryDeleteFlow (action) {
   try {
-    const { id } = action
-    const calory = yield call(caloryDeleteAPI, id);
+    const { payload } = action
+    const calory = yield call(caloryDeleteAPI, payload);
     yield put(deleteCaloriesSuccessful(calory));
   } catch (error) {
     console.log(error)
