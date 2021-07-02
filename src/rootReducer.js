@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-const rootReducer = combineReducers({
+import calories from './Calories/reducers';
 
+const rootReducer = combineReducers({
+  calories,
 });
 
 export default rootReducer;

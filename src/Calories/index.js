@@ -2,6 +2,7 @@
 import React, {useState} from 'react';
 import './styles.css';
 import{ DatePickerComponent } from '@syncfusion/ej2-react-calendars';
+import { connect } from 'react-redux';
 
 const Calories = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -38,4 +39,11 @@ const Calories = () => {
   )
 };
 
-export default Calories
+const mapStateToProps = state => ({  
+  requesting: state.calories.requesting,
+  successful: state.calories.successful,
+  errors: state.calories.errors,
+})
+
+export default connect(mapStateToProps)(Calories);
+
