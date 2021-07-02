@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 import { handleApiErrors } from '../lib/api-errors';
-import { CALORIES_CREATING, CALORIES_LOADING } from './constants';
+import { CALORIES_CREATING, CALORIES_LOADING, CALORY_DELETE } from './constants';
 import {
   createCaloriesSuccess,
   createCaloriesError,
@@ -36,8 +36,8 @@ function createCaloriesApi (calory){
 
 function* caloriesCreateFlow (action) {  
   try {
-    const { notepad } = action
-    const createdCalory = yield call(createCaloriesApi, notepad)
+    const { payload } = action
+    const createdCalory = yield call(createCaloriesApi, payload)
     yield put(createCaloriesSuccess(createdCalory))
   } catch (error) {
     yield put(createCaloriesError(error))
@@ -88,7 +88,7 @@ function* caloriesWatcher () {
   yield [
     takeLatest(CALORIES_CREATING, caloriesCreateFlow),
     takeLatest(CALORIES_LOADING, caloriesRequestFlow),
-    takeLatest('DETELING_CALORY', caloryDeleteFlow)
+    takeLatest(CALORY_DELETE, caloryDeleteFlow)
   ]
 }
 

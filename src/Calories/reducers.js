@@ -5,13 +5,12 @@ import {
   CALORIES_CREATING,
   CALORIES_CREATE_SUCCESS,
   CALORIES_CREATE_ERROR,
-  CALORIES_DELETE_SUCCESSFUL
+  CALORY_DELETE
 } from './constants';
 
 const initialState = {  
   list: [],
   requesting: false,
-  successful: false,
   errors: [],
 }
 
@@ -21,21 +20,18 @@ const caloryReducer = (state = initialState, action) => {
       return {
         ...state,
         requesting: true,
-        successful: false,
         errors: [],
       }
     case CALORIES_CREATE_SUCCESS:
       return {
         list: state.list.concat([action.calory]),
         requesting: false,
-        successful: true,
         errors: [],
       }
     case CALORIES_CREATE_ERROR:
       return {
         ...state,
         requesting: false,
-        successful: false,
         errors: state.errors.concat([{
           body: action.error.toString(),
           time: new Date(),
@@ -45,7 +41,6 @@ const caloryReducer = (state = initialState, action) => {
       return {
         ...state, 
         requesting: true,
-        successful: false,
         errors: [],
       }
     case CALORIES_LOAD_SUCCESS:
@@ -58,13 +53,12 @@ const caloryReducer = (state = initialState, action) => {
     case CALORIES_LOAD_ERROR:
       return {
         requesting: false,
-        successful: false,
         errors: state.errors.concat([{
           body: action.error.toString(),
           time: new Date(),
         }]),
       }
-    case CALORIES_DELETE_SUCCESSFUL:
+    case CALORY_DELETE:
       const newResult = state.list.filter(calory => calory.id !== action.id);
       return newResult
     default:

@@ -1,4 +1,4 @@
-import Calories from './calory/index';
+import Calories from './Calories/index';
 
 function App() {
   return (

@@ -5,7 +5,7 @@ import {
   CALORIES_CREATING,
   CALORIES_CREATE_SUCCESS,
   CALORIES_CREATE_ERROR,
-  CALORIES_DELETE_SUCCESSFUL
+  CALORY_DELETE
 } from './constants';
 
 export const creatingCalories = (calory) => {
@@ -52,7 +52,7 @@ export const caloriesLoadError = (error) => {
 
 export const deleteCaloriesSuccessful = (id) => {
   return {
-    type: CALORIES_DELETE_SUCCESSFUL,
+    type: CALORY_DELETE,
     id
   }
 }
