@@ -9,7 +9,7 @@ import {
 } from './constants';
 
 const initialState = {  
-  calories: [],
+  list: [],
   requesting: false,
   successful: false,
   errors: [],
@@ -26,7 +26,7 @@ const caloryReducer = (state = initialState, action) => {
       }
     case CALORIES_CREATE_SUCCESS:
       return {
-        calories: state.list.concat([action.calory]),
+        list: state.list.concat([action.calory]),
         requesting: false,
         successful: true,
         errors: [],
@@ -50,7 +50,7 @@ const caloryReducer = (state = initialState, action) => {
       }
     case CALORIES_LOAD_SUCCESS:
       return {
-        calories: action.calories,
+        list: action.calories,
         requesting: false,
         successful: true,
         errors: [],
@@ -65,7 +65,7 @@ const caloryReducer = (state = initialState, action) => {
         }]),
       }
     case CALORIES_DELETE_SUCCESSFUL:
-      const newResult = state.calories.filter(calory => calory.id !== action.id);
+      const newResult = state.list.filter(calory => calory.id !== action.id);
       return newResult
     default:
       return state
