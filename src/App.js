@@ -1,9 +1,11 @@
-import Calories from './Calories/index';
+// import Calories from './Calories/index';
+import WorkoutsData from './workout/index';
 
 function App() {
   return (
     <div>
-      <Calories />
+      {/* <Calories /> */}
+      <WorkoutsData />
     </div>
   );
 }

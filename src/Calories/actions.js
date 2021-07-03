@@ -11,21 +11,21 @@ import {
 export const creatingCalories = (calories) => {
   return {
     type: CALORIES_CREATING,
-    calories
+    payload: calories
   }
 }
 
 export const createCaloriesSuccess = (calories) => {
   return {
     type: CALORIES_CREATE_SUCCESS,
-    calories
+    payload: calories
   }
 }
 
 export const createCaloriesError = (error) => {
   return {
     type: CALORIES_CREATE_ERROR,
-    error
+    payload: error
   }
 }
 
@@ -38,14 +38,14 @@ export const caloriesLoading = () => {
 export const carloriesLoadSuccess = (calories) => {
   return {
     type: CALORIES_LOAD_SUCCESS,
-    calories
+    payload: calories
   }
 }
 
 export const caloriesLoadError = (error) => {
   return {
     type: CALORIES_LOAD_ERROR,
-    error
+    payload: error
   }
 }
 
@@ -53,7 +53,7 @@ export const caloriesLoadError = (error) => {
 export const deleteCaloriesSuccessful = (id) => {
   return {
     type: CALORY_DELETE,
-    id
+    payload: id
   }
 }
 
