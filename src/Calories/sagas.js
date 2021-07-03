@@ -10,8 +10,6 @@ import {
   deleteCaloriesSuccessful
 } from './actions';
 
-const url = `${process.env.RAILS_APP_API_URL}`;
-
 function handleRequest (request) {  
   return request
     .then(handleApiErrors)
@@ -20,13 +18,13 @@ function handleRequest (request) {
     .catch((error) => { throw error })
 }
 
-function createCaloriesApi (calory){
-  const caloriesUrl = `${url}/api/v1/calory`
+function createCaloriesApi (calories){
+  const caloriesUrl = "http://localhost:3001/api/v1/calories"
   return axios.post(caloriesUrl, {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(calory),
+    body: JSON.stringify(calories),
   })
   .then(handleApiErrors)
   .then(response => response.json())
@@ -44,13 +42,8 @@ function* caloriesCreateFlow (action) {
   }
 }
 
-function caloriesRequestApi () {  
-  const caloriesRequestUrl = `${url}/api/v1/calories`
-  const request = axios.get(caloriesRequestUrl, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
+function caloriesRequestApi () {
+  const request = axios.get("http://localhost:3001/api/v1/calories")
   return handleRequest(request)
 }
 
@@ -64,7 +57,7 @@ function* caloriesRequestFlow() {
 }
 
 function caloryDeleteAPI (id) {
-  const caloryDeleteUrl = `${url}/api/v1/carlories/${id}`
+  const caloryDeleteUrl = `http://localhost:3001/api/v1/carlories/${id}`
   const request = axios(caloryDeleteUrl, {
     method: 'DELETE',
     headers: {

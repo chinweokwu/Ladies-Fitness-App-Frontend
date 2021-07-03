@@ -8,17 +8,17 @@ import {
   CALORY_DELETE
 } from './constants';
 
-export const creatingCalories = (calory) => {
+export const creatingCalories = (calories) => {
   return {
     type: CALORIES_CREATING,
-    calory
+    calories
   }
 }
 
-export const createCaloriesSuccess = (calory) => {
+export const createCaloriesSuccess = (calories) => {
   return {
     type: CALORIES_CREATE_SUCCESS,
-    calory
+    calories
   }
 }
 

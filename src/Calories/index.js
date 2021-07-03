@@ -8,6 +8,7 @@ import Errors from '../Notifications/Errors';
 import { CALORIES_LOADING, CALORIES_CREATING } from './constants'
 
 const Calories = ({ list, requesting, errors }) => {
+  console.log(list)
   const dispatch = useDispatch()
   const [currentDate, setCurrentDate] = useState(new Date());
   const [weight, setCurrentWeight] = useState(0);
@@ -19,9 +20,11 @@ const Calories = ({ list, requesting, errors }) => {
 
   const calculateCalories = () =>{
     const weights = weight;
+    const calWeight = parseInt(weights.weight)
+    const exceriseTime= time
+    const calTime = (parseInt(exceriseTime.time) * 60)
+    const caloriesLoss = calWeight/calTime
     const day= currentDate.toDateString();
-    const exceriseTime= time * 60
-    const caloriesLoss = weights/exceriseTime
     const res = {
       date: day,
       calories_lost: caloriesLoss
@@ -46,25 +49,23 @@ const Calories = ({ list, requesting, errors }) => {
     dispatch({type: 'CALORY_DELETE', payload: id})
   }
 
-const valuesRequired = value => (value ? undefined : 'values Required');
-
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <DatePickerComponent format="dd-MMM-yy" onChange={handleCurrentDate}></DatePickerComponent>
-        <input type='number' onChange={handleWeight} validate={valuesRequired}/>
-        <input type='number' onChange={handleTime} validate={valuesRequired}/>
+        <input type='number' onChange={handleWeight} />
+        <input type='number' onChange={handleTime} />
         <button>clickme</button>
       </form>
+      <div>
+        {requesting && <span>Creating Loss...</span>}
+        {!requesting && !!errors.length && (
+          <Errors message="Failure to create calory result due to:" errors={errors} />
+        )}
+      </div>
       <hr />
           <div>
-            {requesting && <span>Creating Loss...</span>}
-            {!requesting && !!errors.length && (
-              <Errors message="Failure to create calory result due to:" errors={errors} />
-            )}
-          </div>
-          <div>
-          {list && !!list.length && (
+          {
             list.map(calory => (
               <div key={calory.id}>
                 <strong>{`${calory.date}`}</strong>
@@ -72,7 +73,7 @@ const valuesRequired = value => (value ? undefined : 'values Required');
                 <button onclick={() => {deleteCalory(calory.id)}}></button>
               </div>
             ))
-          )}
+          }
         </div>
     </div>
   )
