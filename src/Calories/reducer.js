@@ -1,4 +1,4 @@
-import { WORKOUTS } from "./constants";
+import { CALORIES } from "./constants";
 
 const initialState = {
   list: [],
@@ -6,21 +6,21 @@ const initialState = {
   errors: [],
 };
 
-const workoutsReducer = (state = initialState, action) => {
+const caloriesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case WORKOUTS.LOAD:
+    case CALORIES.LOAD:
       return {
         ...state,
         requesting: true,
         errors: [],
       };
-    case WORKOUTS.LOAD_SUCCESS:
+    case CALORIES.LOAD_SUCCESS:
       return {
-        list: action.workouts,
+        list: action.calories,
         requesting: false,
         errors: [],
       };
-    case WORKOUTS.LOAD_ERROR:
+    case CALORIES.LOAD_ERROR:
       return {
         requesting: false,
         errors: state.errors.concat([
@@ -34,4 +34,4 @@ const workoutsReducer = (state = initialState, action) => {
       return state;
   }
 };
-export default workoutsReducer;
+export default caloriesReducer;

@@ -3,12 +3,12 @@
 import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import Errors from "../Notifications/Errors";
-import { WORKOUTS } from "./constants";
+import { CALORIES } from "./constants";
 
-const workoutsData = ({ workouts, requesting, errors }) => {
+const caloriesData = ({ calories, requesting, errors }) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch({ type: WORKOUTS.LOAD });
+    dispatch({ type: CALORIES.LOAD });
   }, []);
 
   return (
@@ -20,9 +20,9 @@ const workoutsData = ({ workouts, requesting, errors }) => {
         )}
       </div>
       <div>
-        {workouts?.map((workout) => (
-          <div key={workout.id}>
-            <strong>{`${workout.score}`}</strong>
+        {calories?.map((calory) => (
+          <div key={calory.id}>
+            <strong>{`${calory.score}`}</strong>
             {/* <strong>{`${workout.img_url}`}</strong> */}
           </div>
         ))}
@@ -32,9 +32,9 @@ const workoutsData = ({ workouts, requesting, errors }) => {
 };
 
 const mapStateToProps = (state) => ({
-  workouts: state.workouts.list,
-  requesting: state.workouts.requesting,
-  errors: state.workouts.errors,
+  calories: state.calories.list,
+  requesting: state.calories.requesting,
+  errors: state.calories.errors,
 });
 
-export default connect(mapStateToProps)(workoutsData);
+export default connect(mapStateToProps)(caloriesData);
