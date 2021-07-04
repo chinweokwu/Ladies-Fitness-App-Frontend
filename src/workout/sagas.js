@@ -3,10 +3,9 @@ import axios from 'axios';
 import { WORKOUTS } from './constants';
 import { setWorkouts, getError } from './action';
 
- const fetchWorkouts = () => {
-  return axios.get('http://localhost:3001/api/v1/workouts')
-    .then(response => response.data.attributes)
-    .catch(error => error(error))
+const fetchWorkouts = async() => {
+  const response = await axios.get('https://api.tvmaze.com/search/shows?q=bad');
+  return response.data;
 }
 
 function* handleWorkoutsFlow() {
@@ -19,9 +18,7 @@ function* handleWorkoutsFlow() {
 }
 
 function* workoutWatcher () {  
-  yield [
-    takeLatest(WORKOUTS.LOAD, handleWorkoutsFlow),
-  ]
+  yield takeLatest(WORKOUTS.LOAD, handleWorkoutsFlow)
 }
 
 export default workoutWatcher;
