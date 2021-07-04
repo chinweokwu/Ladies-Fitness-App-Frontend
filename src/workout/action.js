@@ -1,25 +1,21 @@
-import {
-  WORKOUTS_LOADING, 
-  WORKOUTS_LOAD_SUCESS,
-  WORKOUTS_LOAD_ERROR
-} from './constants'
+import { WORKOUTS } from './constants'
 
-export const workoutsLoading = () => {
+export const loadWorkouts = () => {
   return{
-    type: WORKOUTS_LOADING,
+    type: WORKOUTS.LOAD,
   }
 }
 
-export const workoutsLoadSuccess = (workouts) => {
+export const setWorkouts = (workouts) => {
   return{
-    type: WORKOUTS_LOAD_SUCESS,
+    type: WORKOUTS.LOAD_SUCCESS,
     workouts
   }
 }
 
-export const workoutsLoadError = (error) => {
+export const getError = (error) => {
   return{
-    type: WORKOUTS_LOAD_ERROR,
+    type: WORKOUTS.LOAD_ERROR,
     error
   }
 }

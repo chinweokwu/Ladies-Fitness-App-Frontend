@@ -1,27 +1,26 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
-import { WORKOUTS_LOADING } from './constants';
-import { workoutsLoadSuccess, workoutsLoadError } from './action';
+import { WORKOUTS } from './constants';
+import { setWorkouts, getError } from './action';
 
-
-async function requestWorkoutsApi () {
-  return await axios.get("http://localhost:3001/api/v1/workouts")
+ const fetchWorkouts = () => {
+  return axios.get('http://localhost:3001/api/v1/workouts')
     .then(response => response.data.attributes)
     .catch(error => error(error))
 }
 
-function* workoutsRequestFlow() {
+function* handleWorkoutsFlow() {
   try {
-    const workouts = yield call(requestWorkoutsApi)
-    yield put(workoutsLoadSuccess (workouts))
+    const workouts = yield call(fetchWorkouts)
+    yield put(setWorkouts (workouts))
   } catch (error) {
-    yield put(workoutsLoadError(error))
+    yield put(getError(error))
   }
 }
 
 function* workoutWatcher () {  
   yield [
-    takeLatest(WORKOUTS_LOADING, workoutsRequestFlow),
+    takeLatest(WORKOUTS.LOAD, handleWorkoutsFlow),
   ]
 }
 

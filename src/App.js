@@ -1,12 +1,13 @@
-// import Calories from './Calories/index';
+import React from 'react';
+import { Provider } from 'react-redux';
 import WorkoutsData from './workout/index';
+import configStore from './store';
 
-function App() {
+const App = () => {
   return (
-    <div>
-      {/* <Calories /> */}
+    <Provider store={configStore}>
       <WorkoutsData />
-    </div>
+    </Provider>
   );
 }
 

@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import calories from './Calories/reducers';
-import workouts from './workout/reducer';
+import workoutsReducer from './workout/reducer';
 
 const rootReducer = combineReducers({
-  calories,
-  workouts
+  workouts: workoutsReducer
 });
 
 export default rootReducer;

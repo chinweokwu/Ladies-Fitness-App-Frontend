@@ -3,14 +3,14 @@
 import React, {useEffect} from 'react';
 import { connect, useDispatch } from 'react-redux';
 import Errors from '../Notifications/Errors';
-import { WORKOUTS_LOADING  } from './constants'
+import { WORKOUTS  } from './constants'
 
 const workoutsData = ({ workouts, requesting, errors }) => {
   const dispatch = useDispatch()
   console.log(workouts)
   console.log(errors)
   useEffect(()=>{
-    dispatch({type: WORKOUTS_LOADING })
+    dispatch({type: WORKOUTS.LOAD })
   }, [])
 
   return (
@@ -25,7 +25,7 @@ const workoutsData = ({ workouts, requesting, errors }) => {
             workouts.map(workout => (
               <div key={workout.id}>
                 <strong>{`${workout.title}`}</strong>
-                <strong>{`${workout.img_url}`}</strong>
+                {/* <strong>{`${workout.img_url}`}</strong> */}
               </div>
             ))
           }
