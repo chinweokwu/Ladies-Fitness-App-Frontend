@@ -19,3 +19,7 @@ export const getError = (error) => {
     error,
   };
 };
+
+export const createCalory = () => {
+  return {};
+};
