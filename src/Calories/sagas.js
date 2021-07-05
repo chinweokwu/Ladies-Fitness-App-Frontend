@@ -4,7 +4,7 @@ import { CALORIES } from "./constants";
 import { getCalories, getError, setCalory, errorsFromCreate } from "./action";
 
 const fetchCalories = async () => {
-  const response = await axios.get("");
+  const response = await axios.get("https://serene-beyond-13704.herokuapp.com/api/v1/calories");
   return response.data;
 };
 
@@ -18,7 +18,7 @@ function* handleCaloriesFlow() {
 }
 
 const submitCalories = async (calory) => {
-  const response = await axios.post("", calory);
+  const response = await axios.post("https://serene-beyond-13704.herokuapp.com/api/v1/calories", calory);
   return response.data;
 };
 

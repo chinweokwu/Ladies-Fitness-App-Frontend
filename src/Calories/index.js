@@ -56,11 +56,11 @@ const caloriesData = ({ calories, requesting, errors }) => {
         )}
       </div>
       <div>
-        {calories?.map((calory) => (
+        {/* {calories.map((calory) => (
           <div key={calory.id}>
             <strong>{`${calory.calories_lost}`} calories/secs</strong>
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   );

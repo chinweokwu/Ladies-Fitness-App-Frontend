@@ -4,7 +4,7 @@ import { NOTEPADS } from "./constants";
 import { getNotepads, getError, setNotepad, errorsFromCreate } from "./action";
 
 const fetchNotepads = async () => {
-  const response = await axios.get("");
+  const response = await axios.get("https://serene-beyond-13704.herokuapp.com/api/v1/notepads");
   return response.data;
 };
 
@@ -18,7 +18,7 @@ function* handleNotepadsFlow() {
 }
 
 const submitNotepad = async (notepad) => {
-  const response = await axios.post("", notepad);
+  const response = await axios.post("https://serene-beyond-13704.herokuapp.com/api/v1/notepads", notepad);
   return response.data;
 };
 

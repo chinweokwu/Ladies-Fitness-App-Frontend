@@ -4,8 +4,8 @@ import { WORKOUTS } from "./constants";
 import { setWorkouts, getError } from "./action";
 
 const fetchWorkouts = async () => {
-  const response = await axios.get("https://api.tvmaze.com/search/shows?q=bad");
-  return response.data;
+  const response = await axios.get("https://serene-beyond-13704.herokuapp.com/api/v1/workouts");
+  return response.data.attributes;
 };
 
 function* handleWorkoutsFlow() {
