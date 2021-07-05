@@ -50,7 +50,7 @@ const caloriesData = ({ calories, requesting, errors }) => {
         </form>
       </div>
       <div>
-        {requesting && <span>Loading workouts...</span>}
+        {requesting && <span>Loading calories...</span>}
         {!requesting && !!errors.length && (
           <Errors message="Failure to load result due to:" errors={errors} />
         )}

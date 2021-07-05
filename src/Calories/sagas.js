@@ -4,7 +4,7 @@ import { CALORIES } from "./constants";
 import { getCalories, getError, setCalory, errorsFromCreate } from "./action";
 
 const fetchCalories = async () => {
-  const response = await axios.get("https://api.tvmaze.com/search/shows?q=bad");
+  const response = await axios.get("");
   return response.data;
 };
 

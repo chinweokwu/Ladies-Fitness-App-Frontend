@@ -1,4 +1,4 @@
-import { CALORIES } from "./constants";
+import { NOTEPADS } from "./constants";
 
 const initialState = {
   list: [],
@@ -6,21 +6,21 @@ const initialState = {
   errors: [],
 };
 
-const caloriesReducer = (state = initialState, action) => {
+const notepadsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CALORIES.LOAD:
+    case NOTEPADS.LOAD:
       return {
         ...state,
         requesting: true,
         errors: [],
       };
-    case CALORIES.LOAD_SUCCESS:
+    case NOTEPADS.LOAD_SUCCESS:
       return {
-        list: action.calories,
+        list: action.notepads,
         requesting: false,
         errors: [],
       };
-    case CALORIES.LOAD_ERROR:
+    case NOTEPADS.LOAD_ERROR:
       return {
         requesting: false,
         errors: state.errors.concat([
@@ -30,19 +30,19 @@ const caloriesReducer = (state = initialState, action) => {
           },
         ]),
       };
-    case CALORIES.CREATE:
+    case NOTEPADS.CREATING:
       return {
         ...state,
         requesting: true,
         errors: [],
       };
-    case CALORIES.CREATE_SUCCESS:
+    case NOTEPADS.CREATE_SUCCESS:
       return {
-        list: state.list.concat([action.calory]),
+        list: state.list.concat([action.notepad]),
         requesting: false,
         errors: [],
       };
-    case CALORIES.CREATE_ERROR:
+    case NOTEPADS.CREATE_ERROR:
       return {
         requesting: false,
         errors: state.errors.concat([
@@ -56,4 +56,4 @@ const caloriesReducer = (state = initialState, action) => {
       return state;
   }
 };
-export default caloriesReducer;
+export default notepadsReducer;
