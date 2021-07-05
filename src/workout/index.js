@@ -22,8 +22,7 @@ const workoutsData = ({ workouts, requesting, errors }) => {
       <div>
         {workouts?.map((workout) => (
           <div key={workout.id}>
-            <strong>{`${workout.score}`}</strong>
-            {/* <strong>{`${workout.img_url}`}</strong> */}
+            <strong>{`${workout.title}`}</strong>
           </div>
         ))}
       </div>

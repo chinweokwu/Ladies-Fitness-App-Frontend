@@ -30,6 +30,28 @@ const caloriesReducer = (state = initialState, action) => {
           },
         ]),
       };
+    case CALORIES.CREATE:
+      return {
+        ...state,
+        requesting: true,
+        errors: [],
+      };
+    case CALORIES.CREATE_SUCCESS:
+      return {
+        list: state.list.concat([action.calories]),
+        requesting: false,
+        errors: [],
+      };
+    case CALORIES.CREATE_ERROR:
+      return {
+        requesting: false,
+        errors: state.errors.concat([
+          {
+            body: action.error.toString(),
+            time: new Date(),
+          },
+        ]),
+      };
     default:
       return state;
   }

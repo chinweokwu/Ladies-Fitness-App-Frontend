@@ -20,6 +20,23 @@ export const getError = (error) => {
   };
 };
 
-export const createCalory = () => {
-  return {};
+export const createCalory = (calory) => {
+  return {
+    type: CALORIES.CREATE,
+    calory,
+  };
+};
+
+export const setCalory = (calory) => {
+  return {
+    type: CALORIES.CREATE_SUCCESS,
+    calory,
+  };
+};
+
+export const errorsFromCreate = (error) => {
+  return {
+    type: CALORIES.CREATE_ERROR,
+    error,
+  };
 };
