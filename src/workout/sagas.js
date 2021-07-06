@@ -4,8 +4,15 @@ import { WORKOUTS } from "./constants";
 import { setWorkouts, getError } from "./action";
 
 const fetchWorkouts = async () => {
-  const response = await axios.get("https://serene-beyond-13704.herokuapp.com/api/v1/workouts");
-  return response.data.attributes;
+  console.log("");
+  const URL = "https://serene-beyond-13704.herokuapp.com/api/v1/workouts";
+  const response = await axios.get(URL, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  console.log(response.data.data);
+  return response.data.data;
 };
 
 function* handleWorkoutsFlow() {

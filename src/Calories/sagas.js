@@ -3,9 +3,16 @@ import axios from "axios";
 import { CALORIES } from "./constants";
 import { getCalories, getError, setCalory, errorsFromCreate } from "./action";
 
+const URL = "https://serene-beyond-13704.herokuapp.com/api/v1/calories";
+
 const fetchCalories = async () => {
-  const response = await axios.get("https://serene-beyond-13704.herokuapp.com/api/v1/calories");
-  return response.data;
+  const response = await axios.get(URL, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  console.log(response.data);
+  return response.data.data;
 };
 
 function* handleCaloriesFlow() {
@@ -18,7 +25,13 @@ function* handleCaloriesFlow() {
 }
 
 const submitCalories = async (calory) => {
-  const response = await axios.post("https://serene-beyond-13704.herokuapp.com/api/v1/calories", calory);
+  const response = await axios.post(URL, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    calory,
+  });
+  console.log(response.data);
   return response.data;
 };
 

@@ -20,11 +20,14 @@ const workoutsData = ({ workouts, requesting, errors }) => {
         )}
       </div>
       <div>
-        {workouts?.map((workout) => (
-          <div key={workout.id}>
-            <strong>{`${workout.title}`}</strong>
-          </div>
-        ))}
+        {workouts &&
+          !!workouts.length &&
+          workouts.map((workout) => (
+            <div key={workout.id}>
+              <strong>{`${workout.attributes.title}`}</strong>
+              <img src={workout.attributes.img_url} alt="" />
+            </div>
+          ))}
       </div>
     </div>
   );

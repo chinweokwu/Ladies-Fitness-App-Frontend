@@ -5,7 +5,7 @@ import { connect, useDispatch } from "react-redux";
 import Errors from "../Notifications/Errors";
 import { NOTEPADS } from "./constants";
 
-const caloriesData = ({ notepads, requesting, errors }) => {
+const notepadData = ({ notepads, requesting, errors }) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -14,20 +14,12 @@ const caloriesData = ({ notepads, requesting, errors }) => {
     dispatch({ type: NOTEPADS.LOAD });
   }, []);
 
-  const notepad = () => {
-    const notepadTitle = title;
-    const notepadBody = body;
-    const res = {
-      title: notepadTitle,
-      body: notepadBody,
-    };
-
-    return res;
-  };
+  const res = [title, body];
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({ type: NOTEPADS.CREATING, payload: notepad });
+    console.log(res);
+    dispatch({ type: NOTEPADS.CREATING, res });
   };
 
   const handleTitle = (e) => {
@@ -54,11 +46,14 @@ const caloriesData = ({ notepads, requesting, errors }) => {
         )}
       </div>
       <div>
-        {notepads?.map((notepad) => (
-          <div key={notepad.id}>
-            <strong>{`${notepad.title}`}</strong>
-          </div>
-        ))}
+        {notepads &&
+          !!notepads.length &&
+          notepads.map((notepad) => (
+            <div key={notepad.id}>
+              <strong>{`${notepad.title}`}</strong>
+              <strong>{notepad.body}</strong>
+            </div>
+          ))}
       </div>
     </div>
   );
@@ -70,4 +65,4 @@ const mapStateToProps = (state) => ({
   errors: state.notepads.errors,
 });
 
-export default connect(mapStateToProps)(caloriesData);
+export default connect(mapStateToProps)(notepadData);
