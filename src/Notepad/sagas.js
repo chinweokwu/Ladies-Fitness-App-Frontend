@@ -25,6 +25,7 @@ function* handleNotepadsFlow() {
 }
 
 const submitNotepad = async (notepad) => {
+  console.log(notepad);
   const response = await axios.post(URL, {
     headers: {
       "Content-Type": "application/json",
@@ -37,8 +38,8 @@ const submitNotepad = async (notepad) => {
 
 function* notepadCreateFlow(action) {
   try {
-    const { res } = action;
-    const createNotepad = yield call(submitNotepad, res);
+    const { payload } = action;
+    const createNotepad = yield call(submitNotepad, payload);
     yield put(setNotepad(createNotepad));
   } catch (error) {
     yield put(errorsFromCreate(error));

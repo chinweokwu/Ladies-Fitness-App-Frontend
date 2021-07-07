@@ -7,35 +7,59 @@ import { NOTEPADS } from "./constants";
 
 const notepadData = ({ notepads, requesting, errors }) => {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+  const [values, setValue] = useState({
+    title: "",
+    body: "",
+  });
 
   useEffect(() => {
     dispatch({ type: NOTEPADS.LOAD });
   }, []);
 
-  const res = [title, body];
+  const handleChange = (e) => {
+    const val = e.target.value;
+    setValue({
+      ...values,
+      [e.target.name]: val,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(res);
-    dispatch({ type: NOTEPADS.CREATING, res });
+    dispatch({
+      type: NOTEPADS.CREATING,
+      payload: handleChange(),
+    });
   };
 
-  const handleTitle = (e) => {
-    setTitle({ title: e.target.value });
-  };
-
-  const handleBody = (e) => {
-    setBody({ body: e.target.value });
-  };
+  const notepadList = notepads.length ? (
+    notepads &&
+    notepads.map((notepad) => (
+      <div key={notepad.id}>
+        <strong>{notepad.title}</strong>
+        <strong>{notepad.body}</strong>
+      </div>
+    ))
+  ) : (
+    <div> no notes yet </div>
+  );
 
   return (
     <div>
       <div>
         <form onSubmit={handleSubmit}>
-          <input type="text" onChange={handleTitle} />
-          <input type="text" onChange={handleBody} />
+          <input
+            type="text"
+            onChange={handleChange}
+            name="title"
+            value={values.title}
+          />
+          <textarea
+            type="text"
+            onChange={handleChange}
+            name="body"
+            value={values.body}
+          />
           <button>Submit</button>
         </form>
       </div>
@@ -45,16 +69,7 @@ const notepadData = ({ notepads, requesting, errors }) => {
           <Errors message="Failure to load result due to:" errors={errors} />
         )}
       </div>
-      <div>
-        {notepads &&
-          !!notepads.length &&
-          notepads.map((notepad) => (
-            <div key={notepad.id}>
-              <strong>{`${notepad.title}`}</strong>
-              <strong>{notepad.body}</strong>
-            </div>
-          ))}
-      </div>
+      <div>{notepadList}</div>
     </div>
   );
 };
