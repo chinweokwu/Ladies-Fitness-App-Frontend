@@ -28,21 +28,21 @@ const notepadData = ({ notepads, requesting, errors }) => {
     e.preventDefault();
     dispatch({
       type: NOTEPADS.CREATING,
-      payload: handleChange(),
+      payload: values,
     });
   };
 
-  const notepadList = notepads.length ? (
-    notepads &&
-    notepads.map((notepad) => (
-      <div key={notepad.id}>
-        <strong>{notepad.title}</strong>
-        <strong>{notepad.body}</strong>
-      </div>
-    ))
-  ) : (
-    <div> no notes yet </div>
-  );
+  // const notepadList = notepads.length ? (
+  //   notepads &&
+  //   notepads.map((notepad) => (
+  //     <div key={notepad.id}>
+  //       <strong>{notepad.title}</strong>
+  //       <strong>{notepad.body}</strong>
+  //     </div>
+  //   ))
+  // ) : (
+  //   <div> no notes yet </div>
+  // );
 
   return (
     <div>
@@ -69,7 +69,15 @@ const notepadData = ({ notepads, requesting, errors }) => {
           <Errors message="Failure to load result due to:" errors={errors} />
         )}
       </div>
-      <div>{notepadList}</div>
+      <div>
+        {notepads &&
+          notepads.map((notepad) => (
+            <div key={notepad.id}>
+              <strong>{notepad.title}</strong>
+              <strong>{notepad.body}</strong>
+            </div>
+          ))}{" "}
+      </div>
     </div>
   );
 };

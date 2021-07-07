@@ -30,9 +30,8 @@ const submitNotepad = async (notepad) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(notepad),
+    notepad,
   });
-  console.log(response.data);
   return response.data.data;
 };
 
