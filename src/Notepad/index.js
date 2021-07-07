@@ -24,25 +24,24 @@ const notepadData = ({ notepads, requesting, errors }) => {
     });
   };
 
+  const deleteItem = (id) => {
+    dispatch({
+      type: NOTEPADS.DELETE_SUCCESS,
+      payload: id,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({
       type: NOTEPADS.CREATING,
       payload: values,
     });
+    setValue({
+      title: "",
+      body: "",
+    });
   };
-
-  // const notepadList = notepads.length ? (
-  //   notepads &&
-  //   notepads.map((notepad) => (
-  //     <div key={notepad.id}>
-  //       <strong>{notepad.title}</strong>
-  //       <strong>{notepad.body}</strong>
-  //     </div>
-  //   ))
-  // ) : (
-  //   <div> no notes yet </div>
-  // );
 
   return (
     <div>
@@ -75,6 +74,9 @@ const notepadData = ({ notepads, requesting, errors }) => {
             <div key={notepad.id}>
               <strong>{notepad.title}</strong>
               <strong>{notepad.body}</strong>
+              <button key={notepad.id} onClick={() => deleteItem(notepad.id)}>
+                Remove
+              </button>
             </div>
           ))}{" "}
       </div>

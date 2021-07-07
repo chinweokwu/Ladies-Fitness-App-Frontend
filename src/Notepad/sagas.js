@@ -1,9 +1,15 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 import { NOTEPADS } from "./constants";
-import { getNotepads, getError, setNotepad, errorsFromCreate } from "./action";
+import {
+  getNotepads,
+  getError,
+  setNotepad,
+  errorsFromCreate,
+  deleteSuccess,
+} from "./action";
 
-const URL = "https://serene-beyond-13704.herokuapp.com/api/v1/notepads";
+const URL = "https://shrouded-stream-06866.herokuapp.com/api/v1/notepads";
 
 const fetchNotepads = async () => {
   const response = await axios.get(URL, {
@@ -11,7 +17,6 @@ const fetchNotepads = async () => {
       "Content-Type": "application/json",
     },
   });
-  console.log(response.data);
   return response.data;
 };
 
@@ -32,7 +37,7 @@ const submitNotepad = async (notepad) => {
     },
     notepad,
   });
-  return response.data.data;
+  return response.data;
 };
 
 function* notepadCreateFlow(action) {
@@ -45,9 +50,27 @@ function* notepadCreateFlow(action) {
   }
 }
 
+const deleteNotepads = async (id) => {
+  const deleteApi = `https://shrouded-stream-06866.herokuapp.com/api/v1/notepads/${id}`;
+  console.log(deleteApi);
+  const response = await axios.delete(deleteApi);
+  return response.data.data;
+};
+
+function* handleDeleteNotepadsFlow(action) {
+  try {
+    const { payload } = action;
+    const newData = yield call(deleteNotepads, payload);
+    yield put(deleteSuccess(newData));
+  } catch (error) {
+    yield put(console.log(error));
+  }
+}
+
 function* notepadWatcher() {
   yield takeLatest(NOTEPADS.LOAD, handleNotepadsFlow);
   yield takeLatest(NOTEPADS.CREATING, notepadCreateFlow);
+  yield takeLatest(NOTEPADS.DELETE_SUCCESS, handleDeleteNotepadsFlow);
 }
 
 export default notepadWatcher;

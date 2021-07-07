@@ -52,6 +52,11 @@ const notepadsReducer = (state = initialState, action) => {
           },
         ]),
       };
+    case NOTEPADS.DELETE_SUCCESS:
+      return {
+        ...state,
+        list: state.list.filter((notepad) => notepad.id !== action.id),
+      };
     default:
       return state;
   }
