@@ -9,7 +9,7 @@ import {
   deleteSuccess,
 } from "./action";
 
-const URL = "https://shrouded-stream-06866.herokuapp.com/api/v1/notepads";
+const URL = "https://blooming-tor-13030.herokuapp.com/api/v1/notepads";
 
 const fetchNotepads = async () => {
   const response = await axios.get(URL, {
@@ -51,7 +51,7 @@ function* notepadCreateFlow(action) {
 }
 
 const deleteNotepads = async (id) => {
-  const deleteApi = `https://shrouded-stream-06866.herokuapp.com/api/v1/notepads/${id}`;
+  const deleteApi = `https://blooming-tor-13030.herokuapp.com/api/v1/notepads/${id}`;
   console.log(deleteApi);
   const response = await axios.delete(deleteApi);
   return response.data.data;

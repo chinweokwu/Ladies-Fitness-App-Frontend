@@ -5,7 +5,7 @@ import { setWorkouts, getError } from "./action";
 
 const fetchWorkouts = async () => {
   console.log("");
-  const URL = "https://serene-beyond-13704.herokuapp.com/api/v1/workouts";
+  const URL = "https://blooming-tor-13030.herokuapp.com/api/v1/workouts";
   const response = await axios.get(URL, {
     headers: {
       "Content-Type": "application/json",

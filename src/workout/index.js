@@ -26,6 +26,7 @@ const workoutsData = ({ workouts, requesting, errors }) => {
             <div key={workout.id}>
               <strong>{`${workout.attributes.title}`}</strong>
               <img src={workout.attributes.img_url} alt="" />
+              <button>excerises</button>
             </div>
           ))}
       </div>
