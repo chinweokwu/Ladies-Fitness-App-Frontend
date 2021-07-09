@@ -3,7 +3,7 @@ import axios from "axios";
 import { CALORIES } from "./constants";
 import { getCalories, getError, setCalory, errorsFromCreate } from "./action";
 
-const URL = "https://shrouded-stream-06866.herokuapp.com/api/v1/calories";
+const URL = "https://blooming-tor-13030.herokuapp.com/api/v1/calories";
 
 const fetchCalories = async () => {
   const response = await axios.get(URL, {

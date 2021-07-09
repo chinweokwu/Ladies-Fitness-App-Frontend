@@ -4,11 +4,14 @@ import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
 import Errors from "../Notifications/Errors";
 import { CALORIES } from "./constants";
+import Datepicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const caloriesData = ({ calories, requesting, errors }) => {
   const dispatch = useDispatch();
   const [weight, setWeight] = useState(0);
   const [workoutTime, setWorkoutTime] = useState(0);
+  const [selectedDate, setSelectedDate] = useState(null);
 
   useEffect(() => {
     dispatch({ type: CALORIES.LOAD });
@@ -21,7 +24,8 @@ const caloriesData = ({ calories, requesting, errors }) => {
     const calTime = parseInt(setCurrentTime.workoutTime) * 60;
     const caloriesLost = calWeight / calTime;
     const res = {
-      calories_lost: caloriesLost,
+      calories_lost: Number(caloriesLost.toPrecision(4)),
+      date: selectedDate.toDateString(),
     };
 
     return res;
@@ -29,7 +33,10 @@ const caloriesData = ({ calories, requesting, errors }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({ type: CALORIES.CREATE, payload: calculateCalory });
+    dispatch({ type: CALORIES.CREATE, payload: calculateCalory() });
+    // setSelectedDate({ selectedDate: null });
+    // setWeight({ weight: "" });
+    // setWorkoutTime({ workoutTime: "" });
   };
 
   const handleWeight = (e) => {
@@ -44,6 +51,11 @@ const caloriesData = ({ calories, requesting, errors }) => {
     <div>
       <div>
         <form onSubmit={handleSubmit}>
+          <Datepicker
+            dateFormat="yyyy-MM-dd"
+            selected={Date.parse(selectedDate)}
+            onChange={(date) => setSelectedDate(date)}
+          />
           <input type="number" onChange={handleWeight} />
           <input type="number" onChange={handleWorkoutTime} />
           <button>Calculate Calories lost</button>
@@ -57,10 +69,11 @@ const caloriesData = ({ calories, requesting, errors }) => {
       </div>
       <div>
         {calories &&
-          !!calories.length &&
           calories.map((calory) => (
             <div key={calory.id}>
-              <strong>{`${calory.calories_lost}`} calories/secs</strong>
+              <strong> {calory.date} </strong>
+              <strong> {calory.calories_lost} calories/secs</strong>
+              <button>Remove</button>
             </div>
           ))}
       </div>
