@@ -52,6 +52,11 @@ const caloriesReducer = (state = initialState, action) => {
           },
         ]),
       };
+    case CALORIES.DELETE_SUCCESS:
+      return {
+        ...state,
+        list: state.list.filter((calory) => calory.id !== action.id),
+      };
     default:
       return state;
   }

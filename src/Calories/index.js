@@ -34,9 +34,6 @@ const caloriesData = ({ calories, requesting, errors }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: CALORIES.CREATE, payload: calculateCalory() });
-    // setSelectedDate({ selectedDate: null });
-    // setWeight({ weight: "" });
-    // setWorkoutTime({ workoutTime: "" });
   };
 
   const handleWeight = (e) => {
@@ -45,6 +42,13 @@ const caloriesData = ({ calories, requesting, errors }) => {
 
   const handleWorkoutTime = (e) => {
     setWorkoutTime({ workoutTime: e.target.value });
+  };
+
+  const deleteItem = (id) => {
+    dispatch({
+      type: CALORIES.DELETE_SUCCESS,
+      payload: id,
+    });
   };
 
   return (
@@ -73,7 +77,9 @@ const caloriesData = ({ calories, requesting, errors }) => {
             <div key={calory.id}>
               <strong> {calory.date} </strong>
               <strong> {calory.calories_lost} calories/secs</strong>
-              <button>Remove</button>
+              <button key={calory.id} onClick={() => deleteItem(calory.id)}>
+                delete
+              </button>
             </div>
           ))}
       </div>

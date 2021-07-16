@@ -40,3 +40,10 @@ export const errorsFromCreate = (error) => {
     error,
   };
 };
+
+export const deleteSuccess = (id) => {
+  return {
+    type: CALORIES.DELETE_SUCCESS,
+    id,
+  };
+};

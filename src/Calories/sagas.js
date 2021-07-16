@@ -1,7 +1,13 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 import { CALORIES } from "./constants";
-import { getCalories, getError, setCalory, errorsFromCreate } from "./action";
+import {
+  getCalories,
+  getError,
+  setCalory,
+  errorsFromCreate,
+  deleteSuccess,
+} from "./action";
 
 const URL = "https://blooming-tor-13030.herokuapp.com/api/v1/calories";
 
@@ -45,9 +51,26 @@ function* caloriesCreateFlow(action) {
   }
 }
 
+const deleteCalories = async (id) => {
+  const deleteApi = `https://blooming-tor-13030.herokuapp.com/api/v1/calories/${id}`;
+  console.log(deleteApi);
+  const response = await axios.delete(deleteApi);
+  return response.data;
+};
+
+function* handleDeleteCaloriesFlow(action) {
+  try {
+    const { payload } = action;
+    const newData = yield call(deleteCalories, payload);
+    yield put(deleteSuccess(newData));
+  } catch (error) {
+    yield put(console.log(error));
+  }
+}
 function* caloryWatcher() {
   yield takeLatest(CALORIES.LOAD, handleCaloriesFlow);
   yield takeLatest(CALORIES.CREATE, caloriesCreateFlow);
+  yield takeLatest(CALORIES.DELETE_SUCCESS, handleDeleteCaloriesFlow);
 }
 
 export default caloryWatcher;

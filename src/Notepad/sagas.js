@@ -54,7 +54,7 @@ const deleteNotepads = async (id) => {
   const deleteApi = `https://blooming-tor-13030.herokuapp.com/api/v1/notepads/${id}`;
   console.log(deleteApi);
   const response = await axios.delete(deleteApi);
-  return response.data.data;
+  return response.data;
 };
 
 function* handleDeleteNotepadsFlow(action) {
