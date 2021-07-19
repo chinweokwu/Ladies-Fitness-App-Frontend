@@ -1,0 +1,6 @@
+export const LOGIN = {
+  REQUESTING: "LOGIN_LOAD",
+  SUCCESS: "LOGIN_LOAD_SUCCESS",
+  ERROR: "LOGIN_LOAD_ERROR",
+};
+export const LOG_OUT = "LOG_OUT";

@@ -1,4 +1,4 @@
-import { SIGNUP } from "./constants";
+import { LOGIN, LOG_OUT } from "./constants";
 
 const initialState = {
   currentUser: null,
@@ -6,23 +6,23 @@ const initialState = {
   errors: [],
 };
 
-const signupReducer = (state = initialState, action) => {
+const loginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SIGNUP.REQUESTING:
+    case LOGIN.REQUESTING:
       return {
         requesting: true,
         errors: [],
         currentUser: null,
       };
 
-    case SIGNUP.REQUEST_SUCCESS:
+    case LOGIN.SUCCESS:
       return {
         requesting: false,
         currentUser: action.payload,
         error: [],
       };
 
-    case SIGNUP.REQUEST_ERROR:
+    case LOGIN.ERROR:
       return {
         errors: state.errors.concat([
           {
@@ -32,10 +32,11 @@ const signupReducer = (state = initialState, action) => {
         ]),
         requesting: false,
       };
-
+    case LOG_OUT:
+      return initialState;
     default:
       return state;
   }
 };
 
-export default signupReducer;
+export default loginReducer;
