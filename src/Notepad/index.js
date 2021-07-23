@@ -4,6 +4,17 @@ import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
 import Errors from "../Notifications/Errors";
 import { NOTEPADS } from "./constants";
+import Note from "./Note";
+import {
+  Header,
+  Form,
+  Title,
+  ToggleButton,
+  Input,
+  Textarea,
+  Button,
+} from "./style";
+import Modal from "../Modal/index";
 
 const notepadData = ({ notepads, requesting, errors }) => {
   const dispatch = useDispatch();
@@ -11,7 +22,7 @@ const notepadData = ({ notepads, requesting, errors }) => {
     title: "",
     body: "",
   });
-
+  const [show, setShow] = useState(false);
   useEffect(() => {
     dispatch({ type: NOTEPADS.LOAD });
   }, []);
@@ -45,23 +56,35 @@ const notepadData = ({ notepads, requesting, errors }) => {
 
   return (
     <div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <input
+      <Header>
+        <Title> Notepads </Title>
+      </Header>
+      <ToggleButton onClick={() => setShow(true)}> Create Notes</ToggleButton>
+      <Modal
+        title="Write Down Notes"
+        onClose={() => setShow(false)}
+        show={show}
+      >
+        <Form onSubmit={handleSubmit}>
+          <Input
             type="text"
             onChange={handleChange}
             name="title"
             value={values.title}
+            placeholder="Title"
           />
-          <textarea
+          <br></br>
+          <Textarea
             type="text"
             onChange={handleChange}
             name="body"
             value={values.body}
+            placeholder="Create Your Note"
           />
-          <button>Submit</button>
-        </form>
-      </div>
+          <br></br>
+          <Button>Submit</Button>
+        </Form>
+      </Modal>
       <div>
         {requesting && <span>Loading notepads...</span>}
         {!requesting && !!errors.length && (
@@ -71,13 +94,11 @@ const notepadData = ({ notepads, requesting, errors }) => {
       <div>
         {notepads &&
           notepads.map((notepad) => (
-            <div key={notepad.id}>
-              <strong>{notepad.title}</strong>
-              <strong>{notepad.body}</strong>
-              <button key={notepad.id} onClick={() => deleteItem(notepad.id)}>
-                Remove
-              </button>
-            </div>
+            <Note
+              notepad={notepad}
+              key={notepad}
+              deleteItem={() => deleteItem(notepad.id)}
+            />
           ))}{" "}
       </div>
     </div>

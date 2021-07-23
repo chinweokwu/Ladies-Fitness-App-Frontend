@@ -6,12 +6,26 @@ import Errors from "../Notifications/Errors";
 import { CALORIES } from "./constants";
 import Datepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import {
+  Header,
+  Form,
+  Title,
+  ToggleButton,
+  Input,
+  Button,
+  Para,
+  Card,
+  CardTitle,
+  CardBody,
+} from "./style";
+import Modal from "../Modal/index";
 
 const caloriesData = ({ calories, requesting, errors }) => {
   const dispatch = useDispatch();
   const [weight, setWeight] = useState(0);
   const [workoutTime, setWorkoutTime] = useState(0);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     dispatch({ type: CALORIES.LOAD });
@@ -53,18 +67,34 @@ const caloriesData = ({ calories, requesting, errors }) => {
 
   return (
     <div>
-      <div>
-        <form onSubmit={handleSubmit}>
+      <Header>
+        <Title>Calories</Title>
+      </Header>
+      <ToggleButton onClick={() => setShow(true)}>
+        Calculate Calories
+      </ToggleButton>
+      <Modal
+        title="Calculate Calories"
+        onClose={() => setShow(false)}
+        show={show}
+      >
+        <Form onSubmit={handleSubmit}>
+          <Para>Chose workout date</Para>
           <Datepicker
             dateFormat="yyyy-MM-dd"
             selected={Date.parse(selectedDate)}
             onChange={(date) => setSelectedDate(date)}
           />
-          <input type="number" onChange={handleWeight} />
-          <input type="number" onChange={handleWorkoutTime} />
-          <button>Calculate Calories lost</button>
-        </form>
-      </div>
+          <br></br>
+          <Para>Your current weight</Para>
+          <Input type="number" onChange={handleWeight} />
+          <br></br>
+          <Para>Workout Time(minutes)</Para>
+          <Input type="number" onChange={handleWorkoutTime} />
+          <br></br>
+          <Button>Calculate Calories lost</Button>
+        </Form>
+      </Modal>
       <div>
         {requesting && <span>Loading calories...</span>}
         {!requesting && !!errors.length && (
@@ -74,13 +104,13 @@ const caloriesData = ({ calories, requesting, errors }) => {
       <div>
         {calories &&
           calories.map((calory) => (
-            <div key={calory.id}>
-              <strong> {calory.date} </strong>
-              <strong> {calory.calories_lost} calories/secs</strong>
-              <button key={calory.id} onClick={() => deleteItem(calory.id)}>
+            <Card key={calory.id}>
+              <CardTitle> {calory.date} </CardTitle>
+              <CardBody> {calory.calories_lost} calories/secs</CardBody>
+              <Button key={calory.id} onClick={() => deleteItem(calory.id)}>
                 delete
-              </button>
-            </div>
+              </Button>
+            </Card>
           ))}
       </div>
     </div>

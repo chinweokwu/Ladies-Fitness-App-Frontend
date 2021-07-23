@@ -1,25 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { NavLink } from "react-router-dom";
-import "style.css";
+import { Nav, NavLink } from "./style";
 
 const Navbar = () => {
   return (
-    <div>
-      <ul>
-        <li>
-          <NavLink exact to="/">
-            Workouts
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/Calories">Calories</NavLink>
-        </li>
-        <li>
-          <NavLink to="/Notepads">Notepads</NavLink>
-        </li>
-      </ul>
-    </div>
+    <Nav>
+      <NavLink exact to="/">
+        Homepage
+      </NavLink>
+      <NavLink to="/Workouts">Workouts</NavLink>
+      <NavLink to="/Calories">Calories</NavLink>
+      <NavLink to="/Notepads">Notepads</NavLink>
+    </Nav>
   );
 };
 
