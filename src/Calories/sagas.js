@@ -9,15 +9,10 @@ import {
   deleteSuccess,
 } from "./action";
 
-const URL = "https://blooming-tor-13030.herokuapp.com/api/v1/calories";
+const URL = "https://young-chamber-04260.herokuapp.com/api/v1/calories";
 
 const fetchCalories = async () => {
-  const response = await axios.get(URL, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  console.log(response.data);
+  const response = await axios.get(URL);
   return response.data;
 };
 
@@ -31,13 +26,7 @@ function* handleCaloriesFlow() {
 }
 
 const submitCalories = async (calory) => {
-  const response = await axios.post(URL, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    calory,
-  });
-  console.log(response.data);
+  const response = await axios.post(URL, { calory });
   return response.data;
 };
 

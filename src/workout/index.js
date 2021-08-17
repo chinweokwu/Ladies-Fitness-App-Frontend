@@ -2,6 +2,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
 import Errors from "../Notifications/Errors";
 import { WORKOUTS } from "./constants";
 import BtnClock from "../Clock/BtnDisplayClock";
@@ -30,9 +32,7 @@ const workoutsData = ({ workouts, requesting, errors }) => {
   });
   const [interv, setInterv] = useState();
   const [status, setStatus] = useState(0);
-  // Not Started = 0
-  // started = 1
-  // pau = 2
+
   useEffect(() => {
     dispatch({ type: WORKOUTS.LOAD });
   }, []);
@@ -107,7 +107,7 @@ const workoutsData = ({ workouts, requesting, errors }) => {
           )}
         </Message>
       </Header>
-      <div>
+      <Carousel useKeyboardArrows={true} dynamicHeight={true}>
         {workouts &&
           !!workouts.length &&
           workouts.map((workout) => (
@@ -122,7 +122,7 @@ const workoutsData = ({ workouts, requesting, errors }) => {
               </FloatContainer>
             </Container>
           ))}
-      </div>
+      </Carousel>
     </div>
   );
 };

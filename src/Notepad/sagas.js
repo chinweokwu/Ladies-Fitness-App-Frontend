@@ -9,7 +9,7 @@ import {
   deleteSuccess,
 } from "./action";
 
-const URL = "https://blooming-tor-13030.herokuapp.com/api/v1/notepads";
+const URL = "https://young-chamber-04260.herokuapp.com/api/v1/notepads";
 
 const fetchNotepads = async () => {
   const response = await axios.get(URL, {

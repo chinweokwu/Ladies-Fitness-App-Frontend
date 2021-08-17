@@ -9,11 +9,10 @@ justify-content: space-around
 export const FloatContainer = style.div`
 padding: 5px 5px;
 float: left;
-width: 60%;
+width: auto;
 height: auto;
 box-sizing: border-box;
 margin-top: 200px;
-
 `;
 
 export const CardImg = style.div`
@@ -36,7 +35,7 @@ export const Card = style.div`
 background-color: dodgerblue;
 color: black;
 min-height: 100%; /*replace this it in width: 100%*/
-width: 50%;
+width: 500px;
 float: right;
 @media only screen and (max-width: 37.5em) {
   width: 100%;
@@ -66,7 +65,6 @@ background: #fff;
 `;
 
 export const StopWatch = style.div`
-
 `;
 
 export const Header = style.div`
@@ -85,3 +83,7 @@ export const Title = style.h1`
 
 export const Message = style.div`
 `;
+
+export const StyledCarouselContainer = style.div``;
+
+export const StyledArrowContainer = style.div``;
