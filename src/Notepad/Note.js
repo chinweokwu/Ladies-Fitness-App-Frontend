@@ -10,7 +10,7 @@ import {
 const Note = ({ notepad, deleteItem }) => {
   return (
     <CardContainer>
-      <Card key={notepad.id}>
+      <Card key={notepad}>
         <CardTitle>{notepad.title}</CardTitle>
         <CardBody>{notepad.body}</CardBody>
         <DeleteButton key={notepad.id} onClick={deleteItem}>

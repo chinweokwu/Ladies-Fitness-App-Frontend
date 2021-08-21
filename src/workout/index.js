@@ -2,19 +2,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
 import Errors from "../Notifications/Errors";
 import { WORKOUTS } from "./constants";
 import BtnClock from "../Clock/BtnDisplayClock";
 import DisplayClock from "../Clock/DisplayClock";
+import ImageSlider from "../carousel/imageSlider";
 import {
-  Container,
-  FloatContainer,
-  CardImg,
-  Img,
-  Card,
-  CardTitle,
   ClockHolder,
   StopWatch,
   Header,
@@ -84,6 +77,7 @@ const workoutsData = ({ workouts, requesting, errors }) => {
   };
 
   const resume = () => start();
+
   return (
     <div>
       <Header>
@@ -107,22 +101,7 @@ const workoutsData = ({ workouts, requesting, errors }) => {
           )}
         </Message>
       </Header>
-      <Carousel useKeyboardArrows={true} dynamicHeight={true}>
-        {workouts &&
-          !!workouts.length &&
-          workouts.map((workout) => (
-            <Container key={workout.id}>
-              <FloatContainer>
-                <CardImg>
-                  <Img src={workout.attributes.img_url} alt="" />
-                  <Card>
-                    <CardTitle>{`${workout.attributes.title}`}</CardTitle>
-                  </Card>
-                </CardImg>
-              </FloatContainer>
-            </Container>
-          ))}
-      </Carousel>
+      <ImageSlider workouts={workouts} />
     </div>
   );
 };

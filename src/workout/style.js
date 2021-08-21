@@ -71,14 +71,14 @@ export const Header = style.div`
 position: fixed;
 top: 0;
 width: 100%;
-height: 170px;
+height: 100px;
 background-color: #2cd6e6;
 text-align: center;
 `;
 
 export const Title = style.h1`
   margin-top: 20px;
-  color: white
+  color: white;
 `;
 
 export const Message = style.div`

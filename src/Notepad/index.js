@@ -2,27 +2,24 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
-import Errors from "../Notifications/Errors";
 import { NOTEPADS } from "./constants";
 import Note from "./Note";
+import validation from './validation';
 import {
-  Header,
   Form,
-  Title,
-  ToggleButton,
   Input,
   Textarea,
   Button,
 } from "./style";
-import Modal from "../Modal/index";
 
-const notepadData = ({ notepads, requesting, errors }) => {
+const notepadData = ({ notepads, requesting }) => {
   const dispatch = useDispatch();
+  const [err, setErr] =  useState({})
   const [values, setValue] = useState({
     title: "",
     body: "",
   });
-  const [show, setShow] = useState(false);
+
   useEffect(() => {
     dispatch({ type: NOTEPADS.LOAD });
   }, []);
@@ -44,6 +41,8 @@ const notepadData = ({ notepads, requesting, errors }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setErr(validation(values));
     dispatch({
       type: NOTEPADS.CREATING,
       payload: values,
@@ -55,24 +54,20 @@ const notepadData = ({ notepads, requesting, errors }) => {
   };
 
   return (
-    <div>
-      <Header>
-        <Title> Notepads </Title>
-      </Header>
-      <ToggleButton onClick={() => setShow(true)}> Create Notes</ToggleButton>
-      <Modal
-        title="Write Down Notes"
-        onClose={() => setShow(false)}
-        show={show}
-      >
-        <Form onSubmit={handleSubmit}>
+    <div className="m-5">
+ 
+        <h1> Notepads </h1>
+ 
+             <Form onSubmit={handleSubmit}>
           <Input
             type="text"
             onChange={handleChange}
             name="title"
             value={values.title}
             placeholder="Title"
+            required
           />
+          {err.title && <p className="err">{err.title}</p>}
           <br></br>
           <Textarea
             type="text"
@@ -80,23 +75,21 @@ const notepadData = ({ notepads, requesting, errors }) => {
             name="body"
             value={values.body}
             placeholder="Create Your Note"
+            required
           />
+          {err.body && <p className="err">{err.body}</p>}
           <br></br>
           <Button>Submit</Button>
         </Form>
-      </Modal>
       <div>
         {requesting && <span>Loading notepads...</span>}
-        {!requesting && !!errors.length && (
-          <Errors message="Failure to load result due to:" errors={errors} />
-        )}
       </div>
       <div>
         {notepads &&
           notepads.map((notepad) => (
             <Note
               notepad={notepad}
-              key={notepad}
+              key={notepad.id}
               deleteItem={() => deleteItem(notepad.id)}
             />
           ))}{" "}
@@ -108,7 +101,6 @@ const notepadData = ({ notepads, requesting, errors }) => {
 const mapStateToProps = (state) => ({
   notepads: state.notepads.list,
   requesting: state.notepads.requesting,
-  errors: state.notepads.errors,
 });
 
 export default connect(mapStateToProps)(notepadData);

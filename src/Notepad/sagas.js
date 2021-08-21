@@ -1,22 +1,15 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import axios from "axios";
 import { NOTEPADS } from "./constants";
 import {
   getNotepads,
   getError,
   setNotepad,
   errorsFromCreate,
-  deleteSuccess,
 } from "./action";
-
-const URL = "https://young-chamber-04260.herokuapp.com/api/v1/notepads";
+import { authAxios } from "../Services/userServices";
 
 const fetchNotepads = async () => {
-  const response = await axios.get(URL, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  const response = await authAxios.get("api/v1/notepads");
   return response.data;
 };
 
@@ -31,12 +24,7 @@ function* handleNotepadsFlow() {
 
 const submitNotepad = async (notepad) => {
   console.log(notepad);
-  const response = await axios.post(URL, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    notepad,
-  });
+  const response = await authAxios.post("api/v1/notepads", {notepad});
   return response.data;
 };
 
@@ -51,17 +39,16 @@ function* notepadCreateFlow(action) {
 }
 
 const deleteNotepads = async (id) => {
-  const deleteApi = `https://blooming-tor-13030.herokuapp.com/api/v1/notepads/${id}`;
-  console.log(deleteApi);
-  const response = await axios.delete(deleteApi);
+  const response = await authAxios.delete(`api/v1/notepads/${id}`);
   return response.data;
 };
 
 function* handleDeleteNotepadsFlow(action) {
   try {
     const { payload } = action;
-    const newData = yield call(deleteNotepads, payload);
-    yield put(deleteSuccess(newData));
+    yield call(deleteNotepads, payload);
+    const newData = yield call(fetchNotepads)
+    yield put(getNotepads(newData));
   } catch (error) {
     yield put(console.log(error));
   }

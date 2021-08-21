@@ -1,5 +1,4 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import axios from "axios";
 import { CALORIES } from "./constants";
 import {
   getCalories,
@@ -8,11 +7,10 @@ import {
   errorsFromCreate,
   deleteSuccess,
 } from "./action";
-
-const URL = "https://young-chamber-04260.herokuapp.com/api/v1/calories";
+import { authAxios } from "../Services/userServices";
 
 const fetchCalories = async () => {
-  const response = await axios.get(URL);
+  const response = await authAxios.get("api/v1/calories");
   return response.data;
 };
 
@@ -26,7 +24,7 @@ function* handleCaloriesFlow() {
 }
 
 const submitCalories = async (calory) => {
-  const response = await axios.post(URL, { calory });
+  const response = await authAxios.post("api/v1/calories", {calory});
   return response.data;
 };
 
@@ -41,17 +39,16 @@ function* caloriesCreateFlow(action) {
 }
 
 const deleteCalories = async (id) => {
-  const deleteApi = `https://blooming-tor-13030.herokuapp.com/api/v1/calories/${id}`;
-  console.log(deleteApi);
-  const response = await axios.delete(deleteApi);
+  const response = await authAxios.delete(`api/v1/calories/${id}`);
   return response.data;
 };
 
 function* handleDeleteCaloriesFlow(action) {
   try {
     const { payload } = action;
-    const newData = yield call(deleteCalories, payload);
-    yield put(deleteSuccess(newData));
+    yield call(deleteCalories, payload);
+    const newData = yield call(fetchCalories);
+    yield put(getCalories(newData));
   } catch (error) {
     yield put(console.log(error));
   }

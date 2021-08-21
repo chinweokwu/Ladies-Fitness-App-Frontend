@@ -4,8 +4,8 @@ import { setWorkouts, getError } from "./action";
 import { authAxios } from "../Services/userServices";
 
 const fetchWorkouts = async () => {
-  const response = await authAxios.get("/api/v1/workouts");
-  console.log(response.data.data);
+  const response = await authAxios.get("api/v1/workouts");
+  console.log(response);
   return response.data.data;
 };
 

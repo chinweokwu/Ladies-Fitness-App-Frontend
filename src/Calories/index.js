@@ -7,10 +7,7 @@ import { CALORIES } from "./constants";
 import Datepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {
-  Header,
   Form,
-  Title,
-  ToggleButton,
   Input,
   Button,
   Para,
@@ -18,14 +15,12 @@ import {
   CardTitle,
   CardBody,
 } from "./style";
-import Modal from "../Modal/index";
 
 const caloriesData = ({ calories, requesting, errors }) => {
   const dispatch = useDispatch();
   const [weight, setWeight] = useState(0);
   const [workoutTime, setWorkoutTime] = useState(0);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [show, setShow] = useState(false);
 
   useEffect(() => {
     dispatch({ type: CALORIES.LOAD });
@@ -67,34 +62,24 @@ const caloriesData = ({ calories, requesting, errors }) => {
 
   return (
     <div>
-      <Header>
-        <Title>Calories</Title>
-      </Header>
-      <ToggleButton onClick={() => setShow(true)}>
-        Calculate Calories
-      </ToggleButton>
-      <Modal
-        title="Calculate Calories"
-        onClose={() => setShow(false)}
-        show={show}
-      >
-        <Form onSubmit={handleSubmit}>
+      <h1>Calories</h1>
+      <Form onSubmit={handleSubmit}>
           <Para>Chose workout date</Para>
           <Datepicker
             dateFormat="yyyy-MM-dd"
             selected={Date.parse(selectedDate)}
             onChange={(date) => setSelectedDate(date)}
+            required
           />
           <br></br>
           <Para>Your current weight</Para>
-          <Input type="number" onChange={handleWeight} />
+          <Input type="number" onChange={handleWeight} required/>
           <br></br>
           <Para>Workout Time(minutes)</Para>
-          <Input type="number" onChange={handleWorkoutTime} />
+          <Input type="number" onChange={handleWorkoutTime} required/>
           <br></br>
           <Button>Calculate Calories lost</Button>
         </Form>
-      </Modal>
       <div>
         {requesting && <span>Loading calories...</span>}
         {!requesting && !!errors.length && (

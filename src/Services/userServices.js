@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://young-chamber-04260.herokuapp.com/";
+const URL = "http://localhost:3001/";
 
 export const Login = async (credentials) => {
   return await axios.post(URL + "login", credentials).then((response) => {
@@ -43,6 +43,7 @@ console.log(authToken);
 export const authAxios = axios.create({
   baseURL: URL,
   headers: {
-    Authorization: `Bearer ${authToken}`,
+    "Content-Type": "application/json",
+    "Authorization": authToken,
   },
 });
