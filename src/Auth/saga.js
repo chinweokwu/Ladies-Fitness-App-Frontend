@@ -6,7 +6,6 @@ import {
   logInSuccess,
   registerFailure,
   logInFailure,
-  logOut,
 } from "./actions";
 import * as service from "../Services/userServices";
 
@@ -34,16 +33,9 @@ function* signupCreateFlow(action) {
   }
 }
 
-function* logout() {
-  yield call(service.Logout);
-  yield put(logOut());
-  history.push("/");
-}
-
 function* authWatcher() {
   yield takeLatest(AUTH.SIGNUP_START, signupCreateFlow);
   yield takeLatest(AUTH.LOGIN_START, loginCreateFlow);
-  yield takeLatest(AUTH.LOG_OUT, logout);
 }
 
 export default authWatcher;

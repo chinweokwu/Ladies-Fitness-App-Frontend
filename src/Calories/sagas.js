@@ -5,7 +5,6 @@ import {
   getError,
   setCalory,
   errorsFromCreate,
-  deleteSuccess,
 } from "./action";
 import { authAxios } from "../Services/userServices";
 

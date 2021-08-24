@@ -43,6 +43,8 @@ const authReducer = (state = initialState, action) => {
         successful: false,
       };
     case AUTH.LOG_OUT:
+      localStorage.removeItem("user");
+      localStorage.removeItem("jwt");
       return initialState;
     default:
       return state;

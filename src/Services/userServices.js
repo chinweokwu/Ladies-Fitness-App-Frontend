@@ -28,11 +28,6 @@ export const Signup = async (credentials) => {
   });
 };
 
-export const Logout = () => {
-  localStorage.removeItem("user");
-  localStorage.removeItem("jwt");
-};
-
 export const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user"));
 };
