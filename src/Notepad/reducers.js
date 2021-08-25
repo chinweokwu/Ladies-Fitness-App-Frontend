@@ -1,4 +1,4 @@
-import { NOTEPADS } from "./constants";
+import NOTEPADS from './constants';
 
 const initialState = {
   list: [],

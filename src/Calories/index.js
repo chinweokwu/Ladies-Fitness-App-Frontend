@@ -1,11 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-hooks/rules-of-hooks */
-import React, { useEffect, useState } from "react";
-import { connect, useDispatch } from "react-redux";
-import Errors from "../Notifications/Errors";
-import { CALORIES } from "./constants";
-import Datepicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+/* eslint-disable radix */
+import React, { useEffect, useState } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import Datepicker from 'react-datepicker';
+import Errors from '../Notifications/Errors';
+import CALORIES from './constants';
+import 'react-datepicker/dist/react-datepicker.css';
 import {
   Form,
   Input,
@@ -14,7 +13,7 @@ import {
   Card,
   CardTitle,
   CardBody,
-} from "./style";
+} from './style';
 
 const caloriesData = ({ calories, requesting, errors }) => {
   const dispatch = useDispatch();
@@ -61,25 +60,25 @@ const caloriesData = ({ calories, requesting, errors }) => {
   };
 
   return (
-    <div  className="m-5">
+    <div className="m-5">
       <h1>Calories</h1>
       <Form onSubmit={handleSubmit}>
-          <Para>Chose workout date</Para>
-          <Datepicker
-            dateFormat="yyyy-MM-dd"
-            selected={Date.parse(selectedDate)}
-            onChange={(date) => setSelectedDate(date)}
-            required
-          />
-          <br></br>
-          <Para>Your current weight</Para>
-          <Input type="number" onChange={handleWeight} required/>
-          <br></br>
-          <Para>Workout Time(minutes)</Para>
-          <Input type="number" onChange={handleWorkoutTime} required/>
-          <br></br>
-          <Button>Calculate Calories lost</Button>
-        </Form>
+        <Para>Chose workout date</Para>
+        <Datepicker
+          dateFormat="yyyy-MM-dd"
+          selected={Date.parse(selectedDate)}
+          onChange={(date) => setSelectedDate(date)}
+          required
+        />
+        <br />
+        <Para>Your current weight</Para>
+        <Input type="number" onChange={handleWeight} required />
+        <br />
+        <Para>Workout Time(minutes)</Para>
+        <Input type="number" onChange={handleWorkoutTime} required />
+        <br />
+        <Button>Calculate Calories lost</Button>
+      </Form>
       <div>
         {requesting && <span>Loading calories...</span>}
         {!requesting && !!errors.length && (
@@ -87,11 +86,20 @@ const caloriesData = ({ calories, requesting, errors }) => {
         )}
       </div>
       <div>
-        {calories &&
-          calories.map((calory) => (
+        {calories
+          && calories.map((calory) => (
             <Card key={calory.id}>
-              <CardTitle> {calory.date} </CardTitle>
-              <CardBody> {calory.calories_lost} calories/secs</CardBody>
+              <CardTitle>
+                {' '}
+                {calory.date}
+                {' '}
+              </CardTitle>
+              <CardBody>
+                {' '}
+                {calory.calories_lost}
+                {' '}
+                calories/secs
+              </CardBody>
               <Button key={calory.id} onClick={() => deleteItem(calory.id)}>
                 delete
               </Button>

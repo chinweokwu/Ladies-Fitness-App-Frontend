@@ -1,15 +1,15 @@
-import { call, put, takeLatest } from "redux-saga/effects";
-import { NOTEPADS } from "./constants";
+import { call, put, takeLatest } from 'redux-saga/effects';
+import NOTEPADS from './constants';
 import {
   getNotepads,
   getError,
   setNotepad,
   errorsFromCreate,
-} from "./action";
-import { authAxios } from "../Services/userServices";
+} from './action';
+import { authAxios } from '../Services/userServices';
 
 const fetchNotepads = async () => {
-  const response = await authAxios.get("api/v1/notepads");
+  const response = await authAxios.get('api/v1/notepads');
   return response.data;
 };
 
@@ -23,8 +23,7 @@ function* handleNotepadsFlow() {
 }
 
 const submitNotepad = async (notepad) => {
-  console.log(notepad);
-  const response = await authAxios.post("api/v1/notepads", {notepad});
+  const response = await authAxios.post('api/v1/notepads', { notepad });
   return response.data;
 };
 
@@ -47,10 +46,10 @@ function* handleDeleteNotepadsFlow(action) {
   try {
     const { payload } = action;
     yield call(deleteNotepads, payload);
-    const newData = yield call(fetchNotepads)
+    const newData = yield call(fetchNotepads);
     yield put(getNotepads(newData));
   } catch (error) {
-    yield put(console.log(error));
+    yield put(error);
   }
 }
 

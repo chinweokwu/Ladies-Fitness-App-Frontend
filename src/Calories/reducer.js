@@ -1,4 +1,4 @@
-import { CALORIES } from "./constants";
+import CALORIES from './constants';
 
 const initialState = {
   list: [],

@@ -1,4 +1,4 @@
-import { WORKOUTS } from "./constants";
+import WORKOUTS from './constants';
 
 const initialState = {
   list: [],

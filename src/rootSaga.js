@@ -1,8 +1,8 @@
-import { spawn } from "redux-saga/effects";
-import WorkoutsSaga from "./workout/sagas";
-import CaloriesSaga from "./Calories/sagas";
-import NotepadSaga from "./Notepad/sagas";
-import AuthSaga from "./Auth/saga";
+import { spawn } from 'redux-saga/effects';
+import WorkoutsSaga from './workout/sagas';
+import CaloriesSaga from './Calories/sagas';
+import NotepadSaga from './Notepad/sagas';
+import AuthSaga from './Auth/saga';
 
 export default function* rootSaga() {
   yield spawn(WorkoutsSaga);

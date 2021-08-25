@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { getCurrentUser } from "../Services/userServices";
-import { Nav, NavLink } from "./style";
-import { useDispatch } from "react-redux";
-import { logOut } from "../Auth/actions";
-import history from "../history";
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getCurrentUser } from '../Services/userServices';
+import { Nav, NavLink } from './style';
+import { logOut } from '../Auth/actions';
+import history from '../history';
 
 const Navbar = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
   const dispatch = useDispatch();
   const handleLogout = () => {
-    dispatch(logOut())
-    history.push("/")
+    dispatch(logOut());
+    history.push('/');
     window.location.reload();
-  }
+  };
   useEffect(() => {
     const user = getCurrentUser();
     if (user) {
@@ -28,7 +28,7 @@ const Navbar = () => {
           <NavLink to="/Workouts">Workouts</NavLink>
           <NavLink to="/Calories">Calories</NavLink>
           <NavLink to="/Notepads">Notepads</NavLink>
-          <button onClick={handleLogout} >Log Out</button>
+          <button onClick={handleLogout} type="button">Log Out</button>
         </>
       ) : (
         <>

@@ -1,15 +1,15 @@
-import { call, put, takeLatest } from "redux-saga/effects";
-import { CALORIES } from "./constants";
+import { call, put, takeLatest } from 'redux-saga/effects';
+import CALORIES from './constants';
 import {
   getCalories,
   getError,
   setCalory,
   errorsFromCreate,
-} from "./action";
-import { authAxios } from "../Services/userServices";
+} from './action';
+import { authAxios } from '../Services/userServices';
 
 const fetchCalories = async () => {
-  const response = await authAxios.get("api/v1/calories");
+  const response = await authAxios.get('api/v1/calories');
   return response.data;
 };
 
@@ -23,7 +23,7 @@ function* handleCaloriesFlow() {
 }
 
 const submitCalories = async (calory) => {
-  const response = await authAxios.post("api/v1/calories", {calory});
+  const response = await authAxios.post('api/v1/calories', { calory });
   return response.data;
 };
 
@@ -49,7 +49,7 @@ function* handleDeleteCaloriesFlow(action) {
     const newData = yield call(fetchCalories);
     yield put(getCalories(newData));
   } catch (error) {
-    yield put(console.log(error));
+    yield put(error);
   }
 }
 function* caloryWatcher() {

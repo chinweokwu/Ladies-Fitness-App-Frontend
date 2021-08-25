@@ -1,13 +1,13 @@
-import React from "react";
-import WorkoutsData from "../workout/index";
-import CaloriesData from "../Calories/index";
-import NotepadData from "../Notepad/index";
-import HomePage from "../Home/index";
-import Navbar from "./Navbar";
-import NotFound from "./NotFound";
-import Signup from "../Auth/signup";
-import Login from "../Auth/login";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import WorkoutsData from '../workout/index';
+import CaloriesData from '../Calories/index';
+import NotepadData from '../Notepad/index';
+import HomePage from '../Home/index';
+import Navbar from './Navbar';
+import NotFound from './NotFound';
+import Signup from '../Auth/signup';
+import Login from '../Auth/login';
 
 function Navigation() {
   return (

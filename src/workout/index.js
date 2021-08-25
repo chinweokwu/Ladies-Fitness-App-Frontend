@@ -1,19 +1,19 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState, useEffect } from "react";
-import { connect, useDispatch } from "react-redux";
-import Errors from "../Notifications/Errors";
-import { WORKOUTS } from "./constants";
-import BtnClock from "../Clock/BtnDisplayClock";
-import DisplayClock from "../Clock/DisplayClock";
-import ImageSlider from "../carousel/imageSlider";
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-plusplus */
+import React, { useState, useEffect } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import Errors from '../Notifications/Errors';
+import WORKOUTS from './constants';
+import BtnClock from '../Clock/BtnDisplayClock';
+import DisplayClock from '../Clock/DisplayClock';
+import ImageSlider from '../carousel/imageSlider';
 import {
   ClockHolder,
   StopWatch,
   Header,
   Title,
   Message,
-} from "./style";
+} from './style';
 
 const workoutsData = ({ workouts, requesting, errors }) => {
   const dispatch = useDispatch();
@@ -35,10 +35,10 @@ const workoutsData = ({ workouts, requesting, errors }) => {
     setStatus(1);
     setInterv(setInterval(run, 10));
   };
-  var updatedMs = time.ms,
-    updatedS = time.s,
-    updatedM = time.m,
-    updatedH = time.h;
+  let updatedMs = time.ms;
+  let updatedS = time.s;
+  let updatedM = time.m;
+  let updatedH = time.h;
 
   const run = () => {
     if (updatedM === 60) {

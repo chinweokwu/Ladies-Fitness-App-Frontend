@@ -1,30 +1,28 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-hooks/rules-of-hooks */
-import React, { useEffect, useState, useRef } from "react";
-import { connect, useDispatch } from "react-redux";
-import { NOTEPADS } from "./constants";
-import Note from "./Note";
+import React, { useEffect, useState, useRef } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import NOTEPADS from './constants';
+import Note from './Note';
 import validation from './validation';
 import {
   Form,
   Input,
   Textarea,
   Button,
-  ToggleButton
-} from "./style";
-import Modal from "../Modal/index";
+  ToggleButton,
+} from './style';
+import Modal from '../Modal/index';
 
 const notepadData = ({ notepads, requesting }) => {
   const dispatch = useDispatch();
-  const [err, setErr] =  useState({})
+  const [err, setErr] = useState({});
   const [values, setValue] = useState({
-    title: "",
-    body: "",
+    title: '',
+    body: '',
   });
-  const modalRef = useRef()
+  const modalRef = useRef();
   const openModal = () => {
-    modalRef.current.openModal()
-  }
+    modalRef.current.openModal();
+  };
 
   useEffect(() => {
     dispatch({ type: NOTEPADS.LOAD });
@@ -54,16 +52,16 @@ const notepadData = ({ notepads, requesting }) => {
       payload: values,
     });
     setValue({
-      title: "",
-      body: "",
+      title: '',
+      body: '',
     });
   };
 
   return (
     <div className="m-5">
-        <h1> Notepads </h1>
-        <ToggleButton onClick={openModal}> Create Notes</ToggleButton>
-        <Modal ref={modalRef}>
+      <h1> Notepads </h1>
+      <ToggleButton onClick={openModal}> Create Notes</ToggleButton>
+      <Modal ref={modalRef}>
         <Form onSubmit={handleSubmit}>
           <Input
             type="text"
@@ -74,7 +72,7 @@ const notepadData = ({ notepads, requesting }) => {
             required
           />
           {err.title && <p className="err">{err.title}</p>}
-          <br></br>
+          <br />
           <Textarea
             type="text"
             onChange={handleChange}
@@ -84,23 +82,24 @@ const notepadData = ({ notepads, requesting }) => {
             required
           />
           {err.body && <p className="err">{err.body}</p>}
-          <br></br>
+          <br />
           <Button>Submit</Button>
         </Form>
         <ToggleButton onClick={() => modalRef.current.closeModal()} className="btnClose">Close</ToggleButton>
-        </Modal>
+      </Modal>
       <div>
         {requesting && <span>Loading notepads...</span>}
       </div>
       <div>
-        {notepads &&
-          notepads.map((notepad) => (
+        {notepads
+          && notepads.map((notepad) => (
             <Note
               notepad={notepad}
               key={notepad.id}
               deleteItem={() => deleteItem(notepad.id)}
             />
-          ))}{" "}
+          ))}
+        {' '}
       </div>
     </div>
   );

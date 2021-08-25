@@ -1,4 +1,4 @@
-import { AUTH } from "./constants";
+import AUTH from './constants';
 
 const initialState = {
   requesting: false,
@@ -15,7 +15,7 @@ const authReducer = (state = initialState, action) => {
       return {
         requesting: true,
         successful: false,
-        messages: [{ body: "Signing up...", time: new Date() }],
+        messages: [{ body: 'Signing up...', time: new Date() }],
         errors: [],
       };
     case AUTH.LOGIN_SUCCESS:
@@ -43,8 +43,8 @@ const authReducer = (state = initialState, action) => {
         successful: false,
       };
     case AUTH.LOG_OUT:
-      localStorage.removeItem("user");
-      localStorage.removeItem("jwt");
+      localStorage.removeItem('user');
+      localStorage.removeItem('jwt');
       return initialState;
     default:
       return state;
