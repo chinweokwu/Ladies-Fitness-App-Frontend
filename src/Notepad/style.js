@@ -19,7 +19,7 @@ export const Title = style.h1`
 `;
 
 export const ToggleButton = style.button`
-  margin-top: 150px;
+  margin-top: 50px;
   border: 2px solid #00aba9;
   color: #00aba9;
   background: #fff;

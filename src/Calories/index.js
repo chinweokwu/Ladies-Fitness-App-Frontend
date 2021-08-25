@@ -61,7 +61,7 @@ const caloriesData = ({ calories, requesting, errors }) => {
   };
 
   return (
-    <div>
+    <div  className="m-5">
       <h1>Calories</h1>
       <Form onSubmit={handleSubmit}>
           <Para>Chose workout date</Para>

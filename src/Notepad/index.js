@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { connect, useDispatch } from "react-redux";
 import { NOTEPADS } from "./constants";
 import Note from "./Note";
@@ -10,7 +10,9 @@ import {
   Input,
   Textarea,
   Button,
+  ToggleButton
 } from "./style";
+import Modal from "../Modal/index";
 
 const notepadData = ({ notepads, requesting }) => {
   const dispatch = useDispatch();
@@ -19,6 +21,10 @@ const notepadData = ({ notepads, requesting }) => {
     title: "",
     body: "",
   });
+  const modalRef = useRef()
+  const openModal = () => {
+    modalRef.current.openModal()
+  }
 
   useEffect(() => {
     dispatch({ type: NOTEPADS.LOAD });
@@ -55,10 +61,10 @@ const notepadData = ({ notepads, requesting }) => {
 
   return (
     <div className="m-5">
- 
         <h1> Notepads </h1>
- 
-             <Form onSubmit={handleSubmit}>
+        <ToggleButton onClick={openModal}> Create Notes</ToggleButton>
+        <Modal ref={modalRef}>
+        <Form onSubmit={handleSubmit}>
           <Input
             type="text"
             onChange={handleChange}
@@ -81,6 +87,8 @@ const notepadData = ({ notepads, requesting }) => {
           <br></br>
           <Button>Submit</Button>
         </Form>
+        <ToggleButton onClick={() => modalRef.current.closeModal()} className="btnClose">Close</ToggleButton>
+        </Modal>
       <div>
         {requesting && <span>Loading notepads...</span>}
       </div>

@@ -33,45 +33,11 @@ const Login = ({ requesting, successful, messages, errors }) => {
 
   return (
     <div>
-      <div class="login-root">
-    <div class="box-root padding-top--24 flexy flexy-direction" style={{flexGrow: 1, zIindex: 9}}>
-      <div class="box-root padding-top--48 padding-bottom--24 flexy flex-justifyContent--center">
+      <div className="login-root">
+    <div className="box-root padding-top--24 flexy flexy-direction" style={{flexGrow: 1, zIindex: 9}}>
+      <div className="box-root padding-top--48 padding-bottom--24 flexy flex-justifyContent--center">
         <h1>Login</h1>
       </div>
-      <div class="formbg-outer">
-        <div class="formbg">
-          <div class="formbg-inner padding-horizontal--48">
-            <span class="padding-bottom--15">Sign in to your account</span>
-            <form id="stripe-login" onSubmit={handleSubmit}>
-              <div class="field padding-bottom--24">
-                <label for="email">Email</label>
-                <input
-            name="email"
-            type="text"
-            value={values.email}
-            onChange={handleChange}
-          />
-              </div>
-              <div class="field padding-bottom--24">
-                <div class="grid--50-50">
-                  <label for="password">Password</label>
-                </div>
-                <input
-            name="password"
-            type="password"
-            value={values.password}
-            onChange={handleChange}
-          />
-              </div>
-              <div class="field padding-bottom--24">
-                <button className="bttn">Submit</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
       <div>
         {!requesting && undefined !== errors && !!errors.length && (
           <Errors message="Failure to login due to:" errors={errors} />
@@ -84,6 +50,42 @@ const Login = ({ requesting, successful, messages, errors }) => {
           <Link to="/signup">Need to Signup? Click Here »</Link>
         )}
       </div>
+      <div className="formbg-outer">
+        <div className="formbg">
+          <div className="formbg-inner padding-horizontal--48">
+            <span className="padding-bottom--15">Sign in to your account</span>
+            <form id="stripe-login" onSubmit={handleSubmit}>
+              <div className="field padding-bottom--24">
+                <label for="email">Email</label>
+                <input
+                  name="email"
+                  type="text"
+                  value={values.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="field padding-bottom--24">
+                <div className="grid--50-50">
+                  <label for="password">Password</label>
+                </div>
+                <input
+                  name="password"
+                  type="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="field padding-bottom--24">
+                <button className="bttn">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     </div>
   );
 };

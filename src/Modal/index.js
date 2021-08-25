@@ -1,47 +1,35 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useEffect } from "react";
-import ReactDom from "react-dom";
-import { CSSTransition } from "react-transition-group";
+import React, { useState, forwardRef, useImperativeHandle } from "react";
+import ReactDOM from "react-dom";
 import "./style.css";
 
-const Modal = (props) => {
-  const closeOnEscapeKeyDown = (e) => {
-    if ((e.charCode || e.keyCode) === 27) {
-      props.onClose();
+const Modal = forwardRef((props, ref) => {
+  const [display, setDisplay] = useState(true);
+  useImperativeHandle(ref, () => {
+    return {
+      openModal: () => open(),
+      closeModal: () => close()
     }
+  })
+  const open = () => {
+    setDisplay(true)
   };
 
-  useEffect(() => {
-    document.body.addEventListener("keydown", closeOnEscapeKeyDown);
-    return function cleanup() {
-      document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
-    };
-  });
-  return ReactDom.createPortal(
-    <CSSTransition
-      in={props.show}
-      unmountOnExit
-      timeout={{ enter: 0, exit: 300 }}
-    >
-      <div
-        className={`modal ${props.show ? "show" : ""} `}
-        onClick={props.onClose}
-      >
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-          <div className="modal-header">
-            <h4 className="modal-title"> {props.title}</h4>
-          </div>
-          <div className="modal-body">{props.children}</div>
-          <div className="modal-footer">
-            <button onClick={props.onClose} className="button">
-              Close
-            </button>
-          </div>
+  const close = () => {
+    setDisplay(false)
+  };
+
+  if(display) {
+   return ReactDOM.createPortal(
+      <div className="modal-wrapper">
+        <div onClick={close} className="modal-backdrops"/>
+        <div className="modal-box">
+          {props.children}
         </div>
-      </div>
-    </CSSTransition>,
-    document.getElementById("root")
-  );
-};
+      </div>,
+    document.getElementById("modal-root"))
+  }
+  return null;
+})
 
 export default Modal;
