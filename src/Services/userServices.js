@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:3001/";
+const URL = "https://pacific-eyrie-51969.herokuapp.com/";
 
 export const Login = async (credentials) => {
   return await axios.post(URL + "login", credentials).then((response) => {
