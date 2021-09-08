@@ -71,7 +71,7 @@ const caloriesData = ({ calories, requesting, errors }) => {
           required
         />
         <br />
-        <Para>Your current weight</Para>
+        <Para>Your current weight(kg)</Para>
         <Input type="number" onChange={handleWeight} required />
         <br />
         <Para>Workout Time(minutes)</Para>

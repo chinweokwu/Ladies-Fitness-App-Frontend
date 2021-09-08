@@ -5,7 +5,7 @@ import './style.css';
 
 const ImageSlider = ({ workouts }) => {
   const [current, setCurrent] = useState(0);
-  const { length } = workouts;
+  const length = workouts;
 
   if (!Array.isArray(workouts) || workouts.length <= 0) {
     return null;

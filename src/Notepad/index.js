@@ -91,14 +91,15 @@ const notepadData = ({ notepads, requesting }) => {
         {requesting && <span>Loading notepads...</span>}
       </div>
       <div>
-        {notepads
-          && notepads.map((notepad) => (
+        {
+          notepads.map((notepad) => (
             <Note
               notepad={notepad}
               key={notepad.id}
               deleteItem={() => deleteItem(notepad.id)}
             />
-          ))}
+          ))
+        }
         {' '}
       </div>
     </div>
