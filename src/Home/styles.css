@@ -1,6 +1,6 @@
 .bg {
-  background-image: linear-gradient(rgb(72,0,72,0.8), rgb(192,72,72,0.8)), url("https://st2.depositphotos.com/3927429/8215/i/600/depositphotos_82158134-stock-photo-athletic-man-and-woman-with.jpg");
-  height: 100vh; 
+  background-image: linear-gradient(rgb(72, 0, 72, 0.8), rgb(192, 72, 72, 0.8)), url("https://st2.depositphotos.com/3927429/8215/i/600/depositphotos_82158134-stock-photo-athletic-man-and-woman-with.jpg");
+  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -9,12 +9,12 @@
 }
 
 .auth {
- text-align: center;
- color: white;
- padding: 170px 0;
+  text-align: center;
+  color: white;
+  padding: 170px 0;
 }
 
-Link {
+link {
   color: white;
   text-decoration: none;
 }
