@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# Final Capstone Project: Homw Workouts
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Final Capstone Project - Find My Course
 
-## Available Scripts
+> In this final capstone project, I completed the following tasks:
 
-In the project directory, you can run:
+- Use React and Redux to build a website where users can see lists of workouts and set a timer.
+- Make external API requests to retrieve a list of workouts from the server.
+- Store the retrieved API data in the `redux store`.
+- Create and Remove notepads and calories only if a given user is authenticated.
+- calculate calories lost
+- Use the `React-Redux Hooks` and `React-Redux Saga` to fetch the workouts, calories lost and notepads data from the `redux store`.
+- Use `axios`, a client HTTP API to make external API calls.
+- Use the `redux-saga` middleware.
+- use component styling
+- create a reusable modal, card, carousel and timer component
 
-### `yarn start`
+### Languages, Frameworks, Metthods
+
+- JavaScript
+- ReactJS
+- React-Redux
+- React-Redux Hooks
+- Bootstrap
+- component styling
+- Redux saga
+
+## 📝 Setup
+
+- Open a terminal
+
+- Clone this app:
+  `git clone https://github.com/chinweokwu/Ladies-Fitness-App-Frontend.git`
+- put in your username
+
+- generate an access token from git hub see link: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository
+
+- copy the access generated token and paste as password
+
+- `cd` into the app directory.
+
+- Run the command `npm install` to install the required dependencies.
+
+- In the project directory, run:
+
+#### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Live demo [here](https://wonderful-pare-121d86.netlify.app)
 
-### `yarn test`
+### Link to the front-end repo [here](https://github.com/chinweokwu/Ladies-Fitness-App-Frontend.git)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Link to the Back-end repo [here](https://github.com/chinweokwu/Ladies-Fitness-App-Backend.git)
 
-### `yarn build`
+## Author
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+👤 **Morah Paul**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Github: [@chinweokwu](https://github.com/chinweokwu)
+- Linkedin: [chinweokwu](https://www.linkedin.com/in/morah-paul/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🤝 Contributing
 
-### `yarn eject`
+- Contributions, issues, and feature requests are welcome!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Feel free to check the [issues page](https://github.com/chinweokwu/Ladies-Fitness-App-Frontend/issues).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Show your support
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Give a ⭐️ if you like this project!
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Acknowledgments
 
-## Learn More
+- Microverse
+- etc
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Credit
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Design idea by [ Gregoire Vella on Behance](https://www.behance.net/gallery/13271423/Bodytrackit-An-iOs-app-Branding-UX-and-UI).
 
-### Code Splitting
+## 📝 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is provided with MIT license.
