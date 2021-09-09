@@ -30,7 +30,7 @@
 - Open a terminal
 
 - Clone this app:
-  ` git clone https://github.com/chinweokwu/Ladies-Fitness-App-Frontend.git `
+  `git clone https://github.com/chinweokwu/Ladies-Fitness-App-Frontend.git`
 - put in your username
 
 - generate an access token from git hub see link: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository
